@@ -7,9 +7,16 @@
       "command": "node",
       "args": [
         "scripts/criar-componente.js",
-        "teste123"
+        "${input:nome}"
       ],
       "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "nome",
+      "type": "promptString",
+      "description": "Nome do componente"
     }
   ]
 }

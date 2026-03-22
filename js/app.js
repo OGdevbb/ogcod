@@ -192,6 +192,16 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/pills-categorias/index.html',
     image: 'https://imgur.com/Z3Wzwcm.png'
+  },
+
+    {
+    id: 'estilo-entrega',
+    name: 'Estilo de Entrega',
+    tags: ['entrega', 'estoque', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/estilo-entrega/index.html',
+    image: 'https://imgur.com/E9jPLQi.png'
   }
 
   // ─────────────────────────────────────────────────────────────
