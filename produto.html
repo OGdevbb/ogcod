@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG! — Componente</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body class="produto-page">
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">OG<span>!</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#componentes">Componentes</a></li>
+      <li><a href="index.html#como-funciona">Como Funciona</a></li>
+      <li><a href="produtos.html" class="nav-cta">Explorar</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="product-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-accent-glow"></div>
+    <div class="hero-accent-glow2"></div>
+
+    <div class="product-hero-inner">
+      <div class="product-topline">✦ Componente OG!</div>
+
+      <div class="product-head-grid">
+        <div class="product-copy">
+          <div class="product-meta-row">
+            <span class="product-badge" id="produtoBadge">Grátis</span>
+            <span class="product-category" id="produtoCategoria">Layout</span>
+          </div>
+
+          <h1 class="product-title" id="produtoNome">Carregando componente...</h1>
+          <p class="product-desc" id="produtoDescricao">
+            Aguarde enquanto o componente é carregado.
+          </p>
+
+          <div class="product-tags" id="produtoTags"></div>
+
+          <div class="product-actions">
+            <button class="btn-primary" id="copiarTudoBtn" type="button">
+              Copiar Tudo
+            </button>
+            <a href="#codigo" class="btn-ghost">Ver Código →</a>
+          </div>
+        </div>
+
+        <div class="product-preview-card">
+          <div class="preview-head">
+            <div class="preview-dot red"></div>
+            <div class="preview-dot yellow"></div>
+            <div class="preview-dot green"></div>
+            <span class="preview-label">Preview</span>
+          </div>
+
+          <div class="product-preview-area" id="produtoPreviewArea">
+            <div class="preview-loading">Carregando preview...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDO -->
+  <section class="product-content">
+    <div class="product-content-grid">
+      <aside class="product-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-title">Informações</div>
+
+          <div class="sidebar-info-list">
+            <div class="sidebar-info-item">
+              <span>Tipo</span>
+              <strong id="infoTipo">Componente</strong>
+            </div>
+            <div class="sidebar-info-item">
+              <span>Categoria</span>
+              <strong id="infoCategoria">-</strong>
+            </div>
+            <div class="sidebar-info-item">
+              <span>Status</span>
+              <strong id="infoStatus">Grátis</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">Ações rápidas</div>
+
+          <div class="sidebar-actions">
+            <button type="button" class="sidebar-btn" data-copy="html">Copiar HTML</button>
+            <button type="button" class="sidebar-btn" data-copy="css">Copiar CSS</button>
+            <button type="button" class="sidebar-btn" data-copy="js">Copiar JS</button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="product-main" id="codigo">
+        <div class="code-panel">
+          <div class="code-panel-top">
+            <div class="code-panel-tabs">
+              <button class="code-tab active" data-tab="html" type="button">HTML</button>
+              <button class="code-tab" data-tab="css" type="button">CSS</button>
+              <button class="code-tab" data-tab="js" type="button">JS</button>
+            </div>
+
+            <button class="copy-code-btn" id="copiarAbaBtn" type="button">Copiar aba</button>
+          </div>
+
+          <div class="code-block-wrap active" data-code="html">
+            <pre class="code-block"><code id="codigoHtml"></code></pre>
+          </div>
+
+          <div class="code-block-wrap" data-code="css">
+            <pre class="code-block"><code id="codigoCss"></code></pre>
+          </div>
+
+          <div class="code-block-wrap" data-code="js">
+            <pre class="code-block"><code id="codigoJs"></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-label">Continue explorando</div>
+    <h2 class="cta-title">MAIS CÓDIGOS.<br>MAIS OG!.</h2>
+    <p class="cta-sub">
+      Volte para a home e explore mais componentes prontos para copiar e usar no seu projeto.
+    </p>
+    <a href="index.html#componentes" class="btn-dark">
+      Explorar Componentes
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">OG<span>!</span></div>
+        <p class="footer-desc">
+          Gerador gratuito de componentes HTML, CSS e JS para o seu site. Rápido, simples e sem dependências.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Componentes</div>
+        <ul class="footer-links">
+          <li><a href="index.html#componentes">Banner</a></li>
+          <li><a href="index.html#componentes">Navbar</a></li>
+          <li><a href="index.html#componentes">Card de Produto</a></li>
+          <li><a href="index.html#componentes">Footer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="index.html#como-funciona">Como Funciona</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Info</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Sobre o OG!</a></li>
+          <li><a href="index.html#componentes">Solicitar Componente</a></li>
+          <li><a href="index.html#componentes">Reportar Bug</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 OG! — Todos os componentes são gratuitos.</span>
+      <span class="footer-badge">produto.html</span>
+    </div>
+  </footer>
+
+  <script src="js/produto.js"></script>
+</body>
+
+</html>

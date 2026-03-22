@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>banner-hero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="banner-hero.css">
+</head>
+<body>
+
+  <div id="ogC"></div>
+  <div id="ogR"></div>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-logo">OG<s>!</s></a>
+    <ul class="nav-links">
+      <li><a href="../../index.html#componentes">Componentes</a></li>
+      <li><a href="../../index.html#como-funciona">Como Funciona</a></li>
+      <li><a href="../../index.html" class="nav-cta">Começar Grátis</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="bc">
+      <a href="../../index.html">Início</a><span class="bc-s">›</span>
+      <a href="../../index.html#componentes">Componentes</a><span class="bc-s">›</span>
+      <span class="bc-c" id="bcTitle"></span>
+    </div>
+    <h1 class="comp-h1" id="compH1"></h1>
+    <p class="comp-desc" id="compDesc"></p>
+    <div class="comp-tags" id="compTags"></div>
+  </div>
+
+  <div class="layout">
+    <div class="preview-col">
+      <div class="plabel"><span class="pdot"></span> Preview ao vivo</div>
+      <div class="preview-box" id="previewBox"></div>
+    </div>
+
+    <div class="right-col">
+      <div class="panel">
+        <div class="panel-hd">Personalize o Componente</div>
+        <div class="fields-wrap" id="fieldsWrap"></div>
+        <button class="gen-btn" id="genBtn">Gerar Código</button>
+      </div>
+
+      <div class="free-box">
+        <div class="free-title">GRÁTIS</div>
+        <div class="free-row">Gerador Gratuito</div>
+        <p class="free-sub">Uso ilimitado · Sem custos · Gere agora mesmo</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="modal-hd">
+        <span class="modal-title">Código Gerado</span>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <div class="code-tabs">
+        <button class="code-tab active" data-tab="html">HTML</button>
+        <button class="code-tab" data-tab="css">CSS</button>
+        <button class="code-tab" data-tab="js">JS</button>
+      </div>
+      <div class="code-area">
+        <pre class="code-pre" id="codePre"></pre>
+        <button class="copy-btn" id="copyBtn">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="banner-hero.js"></script>
+</body>
+</html>

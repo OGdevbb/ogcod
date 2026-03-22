@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site de Códigos</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body>
+
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ── NAVBAR ─────────────────────────────────────────────── -->
+    <nav>
+        <a href="index.html" class="nav-logo">OG<span>!</span></a>
+        <ul class="nav-links">
+            <li><a href="#componentes">Componentes</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="produtos.html" class="nav-cta">Começar Grátis</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── HERO ───────────────────────────────────────────────── -->
+    <section class="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-accent-glow"></div>
+        <div class="hero-accent-glow2"></div>
+
+        <div class="hero-tag fade-up delay-1">✦ Gerador de Código Gratuito</div>
+
+        <h1 class="hero-title fade-up delay-2">
+            <span class="line1">Crie.</span>
+            <span class="line2">Customize.</span>
+            <span class="line3">Cole.</span>
+        </h1>
+
+        <p class="hero-sub fade-up delay-3">
+            Gere banners, sliders, navbars, cards e muito mais com código JS, CSS e HTML personalizado. Sem enrolação.
+            Sem limite.
+        </p>
+
+        <div class="hero-actions fade-up delay-4">
+            <a href="#componentes" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                Ver Componentes
+            </a>
+            <a href="#como-funciona" class="btn-ghost">Como Funciona →</a>
+        </div>
+
+        <div class="hero-stats fade-up delay-5">
+            <div class="stat-item">
+                <div class="stat-num">+20</div>
+                <div class="stat-label">Componentes prontos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Gratuito</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Dependências</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── MARQUEE ────────────────────────────────────────────── -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span class="marquee-item">BANNER</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">SLIDER</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">NAVBAR</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">CARD DE PRODUTO</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">FORMULÁRIO</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">FOOTER</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">MODAL</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">CAROUSEL</span>
+            <span class="marquee-item accent2">✦</span>
+
+            <!-- duplicado para loop contínuo -->
+            <span class="marquee-item">BANNER</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">SLIDER</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">NAVBAR</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">CARD DE PRODUTO</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">FORMULÁRIO</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">FOOTER</span>
+            <span class="marquee-item accent2">✦</span>
+            <span class="marquee-item">MODAL</span>
+            <span class="marquee-item accent">✦</span>
+            <span class="marquee-item">CAROUSEL</span>
+            <span class="marquee-item accent2">✦</span>
+        </div>
+    </div>
+
+    <!-- ── COMPONENTES ────────────────────────────────────────── -->
+    <section id="componentes">
+        <div class="components-intro">
+            <div>
+                <div class="section-label">Componentes</div>
+                <h2 class="section-title">Escolha.<br>Configure.<br>Use.</h2>
+            </div>
+            <div>
+                <p class="components-desc">
+                    Todos os componentes são gerados com código limpo, sem frameworks externos.
+                    Copie, cole e personalize no seu projeto.
+                </p>
+                <div class="filter-tabs" style="margin-top: 24px;">
+                    <button class="filter-tab active" data-filter="todos">Todos</button>
+                    <button class="filter-tab" data-filter="banner">Banner</button>
+                    <button class="filter-tab" data-filter="navegacao">Navegação</button>
+                    <button class="filter-tab" data-filter="produto">Produto</button>
+                    <button class="filter-tab" data-filter="layout">Layout</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+
+    <!-- ── FEATURES ───────────────────────────────────────────── -->
+    <section class="features-section">
+        <div class="section-label">Por que OG!?</div>
+        <h2 class="section-title">Direto ao ponto.</h2>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Rápido pra caramba</div>
+                <div class="feature-desc">
+                    Configure e gere seu código em segundos. Sem cadastro, sem espera, sem enrolação.
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🆓</div>
+                <div class="feature-title">100% Gratuito</div>
+                <div class="feature-desc">
+                    Todos os componentes são gratuitos. Use à vontade em projetos pessoais e comerciais.
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">Totalmente Customizável</div>
+                <div class="feature-desc">
+                    Cores, textos, tamanhos e muito mais. O código é seu, customize como quiser.
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📦</div>
+                <div class="feature-title">Zero Dependências</div>
+                <div class="feature-desc">
+                    HTML puro, CSS vanilla e JavaScript sem frameworks. Funciona em qualquer lugar.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── COMO FUNCIONA ──────────────────────────────────────── -->
+    <section id="como-funciona">
+        <div class="section-label">Como funciona</div>
+        <h2 class="section-title">Dois cliques e pronto.</h2>
+
+        <div class="how-grid">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">01</div>
+                    <div>
+                        <div class="step-title">Escolha um componente</div>
+                        <div class="step-desc">
+                            Navegue entre banners, navbars, cards, formulários e mais.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">02</div>
+                    <div>
+                        <div class="step-title">Personalize do seu jeito</div>
+                        <div class="step-desc">
+                            Ajuste textos, botões, cores e estrutura do componente que você quiser.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">03</div>
+                    <div>
+                        <div class="step-title">Copie e use no seu site</div>
+                        <div class="step-desc">
+                            Pegue o HTML, CSS e JS e aplique direto no seu projeto sem complicação.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-window">
+                <div class="demo-titlebar">
+                    <div class="demo-dot red"></div>
+                    <div class="demo-dot yellow"></div>
+                    <div class="demo-dot green"></div>
+
+                    <div class="demo-tabbar">
+                        <div class="demo-tab active">HTML</div>
+                        <div class="demo-tab">CSS</div>
+                        <div class="demo-tab">JS</div>
+                    </div>
+                </div>
+
+                <div class="demo-code">
+                    <div class="code-line"><span class="ln">1</span><span class="kw">&lt;section</span> <span
+                            class="prop">class</span>=<span class="str">"hero-banner"</span><span
+                            class="kw">&gt;</span></div>
+                    <div class="code-line"><span class="ln">2</span>&nbsp;&nbsp;<span class="kw">&lt;div</span> <span
+                            class="prop">class</span>=<span class="str">"container"</span><span
+                            class="kw">&gt;</span></div>
+                    <div class="code-line"><span class="ln">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="kw">&lt;h1&gt;</span><span class="acc">Seu título aqui</span><span
+                            class="kw">&lt;/h1&gt;</span></div>
+                    <div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="kw">&lt;p&gt;</span>Sua descrição personalizada<span
+                            class="kw">&lt;/p&gt;</span></div>
+                    <div class="code-line"><span class="ln">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="kw">&lt;a</span> <span class="prop">href</span>=<span class="str">"#"</span>
+                        <span class="prop">class</span>=<span class="str">"og-btn"</span><span
+                            class="kw">&gt;</span>
+                    </div>
+                    <div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="acc">Ver Produtos</span></div>
+                    <div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="kw">&lt;/a&gt;</span></div>
+                    <div class="code-line"><span class="ln">8</span>&nbsp;&nbsp;<span class="kw">&lt;/div&gt;</span>
+                    </div>
+                    <div class="code-line"><span class="ln">9</span><span class="kw">&lt;/section&gt;</span></div>
+                    <div class="code-line"><span class="ln">10</span></div>
+                    <div class="code-line"><span class="ln">11</span><span class="cm">/* personalize abaixo */</span>
+                    </div>
+                    <div class="code-line"><span class="ln">12</span><span class="prop">--og-title-color</span>:
+                        <span class="val">#ffffff</span>;
+                    </div>
+                    <div class="code-line"><span class="ln">13</span><span class="prop">--og-btn-bg</span>:
+                        <span class="val">#7c3aed</span>;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────────────────── -->
+    <div class="cta-section">
+        <div class="cta-label">Comece agora mesmo</div>
+        <h2 class="cta-title">É GRÁTIS.<br>PRA SEMPRE.</h2>
+        <p class="cta-sub">
+            Sem cadastro, sem cartão de crédito, sem limite de uso. Gere quantos componentes quiser.
+        </p>
+        <a href="#componentes" class="btn-dark">
+            Explorar Componentes
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────────────────────── -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">OG<span>!</span></div>
+                <p class="footer-desc">
+                    Gerador gratuito de componentes HTML, CSS e JS para o seu site. Rápido, simples e sem dependências.
+                </p>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Componentes</div>
+                <ul class="footer-links">
+                    <li><a href="#componentes">Banner</a></li>
+                    <li><a href="#componentes">Slider</a></li>
+                    <li><a href="#componentes">Navbar</a></li>
+                    <li><a href="#componentes">Card de Produto</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Mais</div>
+                <ul class="footer-links">
+                    <li><a href="#componentes">Footer</a></li>
+                    <li><a href="#componentes">Formulário</a></li>
+                    <li><a href="#componentes">Modal</a></li>
+                    <li><a href="#componentes">Tabs</a></li>
+                    <li><a href="#componentes">Accordion</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Info</div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre o OG!</a></li>
+                    <li><a href="produtos.html">Solicitar Componente</a></li>
+                    <li><a href="produtos.html">Reportar Bug</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 OG! — Todos os componentes são gratuitos.</span>
+            <span class="footer-badge">v1.0.0</span>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
