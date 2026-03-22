@@ -117,6 +117,28 @@ COMPONENT.tags.forEach(function(t) {
   document.getElementById('compTags').appendChild(s);
 });
 
+// ── Aviso de funcionamento ────────────────────────────────────
+(function() {
+  var aviso = document.createElement('div');
+  aviso.style.cssText =
+    'background:#0d1117;border:1px solid #1e2a1e;border-left:3px solid #00ff88;'
+    + 'border-radius:10px;padding:14px 16px;margin-bottom:20px;';
+
+  aviso.innerHTML =
+    '<div style="font-size:0.78rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#00ff88;margin-bottom:10px;">Como funciona</div>'
+    + '<div style="font-size:0.82rem;color:#8b9aaa;line-height:1.7;">'
+      + 'O script intercepta o botão <strong style="color:#e8eaf0">"Ver produto"</strong> da Ereemby e detecta automaticamente o tipo de entrega:<br><br>'
+      + '<span style="display:block;padding:3px 0;">📧 <strong style="color:#e8eaf0">E-mail + Senha</strong> — formato <code style="background:#1a1f2e;padding:1px 6px;border-radius:4px;color:#7c83ff">email@dominio.com/senha</code></span>'
+      + '<span style="display:block;padding:3px 0;">🔢 <strong style="color:#e8eaf0">PIN</strong> — adicione <code style="background:#1a1f2e;padding:1px 6px;border-radius:4px;color:#7c83ff">pin 1234</code> após a senha</span>'
+      + '<span style="display:block;padding:3px 0;">🔗 <strong style="color:#e8eaf0">Link</strong> — qualquer URL começando com <code style="background:#1a1f2e;padding:1px 6px;border-radius:4px;color:#7c83ff">https://</code></span>'
+      + '<span style="display:block;padding:3px 0;">📄 <strong style="color:#e8eaf0">Conteúdo livre</strong> — qualquer outro texto (chave, código, etc)</span>'
+    + '</div>';
+
+  var panel = document.querySelector('.panel');
+  var genBtn = document.getElementById('genBtn');
+  if (panel && genBtn) panel.insertBefore(aviso, genBtn);
+})();
+
 // ── Renderiza campos ─────────────────────────────────────────
 var fw = document.getElementById('fieldsWrap');
 
