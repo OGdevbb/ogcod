@@ -1,21 +1,6 @@
 // =============================================================
 //  OG! — script.js
-//  Tudo em um arquivo só: lista de cards + lógica da página
 // =============================================================
-
-
-// ─────────────────────────────────────────────────────────────
-//  CARDS — adicione novos componentes aqui
-//
-//  Campos de cada card:
-//    id       → identificador único (sem espaços)
-//    name     → nome exibido no card
-//    tags     → array de palavras-chave (aparece abaixo do nome)
-//    badge    → 'free' | 'new' | 'pro'
-//    category → 'banner' | 'navegacao' | 'produto' | 'layout'
-//    link     → URL para onde o card redireciona ao clicar
-//    preview  → HTML do mini-preview visual dentro do card
-// ─────────────────────────────────────────────────────────────
 
 const CARDS = [
 
@@ -139,7 +124,7 @@ const CARDS = [
     image: 'https://imgur.com/uqQokI2.png'
   },
 
-    {
+  {
     id: 'redes-sociais',
     name: 'Redes Sociais',
     tags: ['redes', 'sociais', 'tiktok', 'youtube'],
@@ -149,17 +134,7 @@ const CARDS = [
     image: 'https://imgur.com/aBIMKzv.png'
   },
 
-    {
-    id: 'selo-de-seguranca',
-    name: 'Selo de Segurança',
-    tags: ['selo', 'segurança', 'reclameaqui', 'google'],
-    badge: 'free',
-    category: 'layout',
-    link: 'codigos/selo-de-seguranca/index.html',
-    image: 'https://imgur.com/uqQokI2.png'
-  },
-
-    {
+  {
     id: 'avaliacao-fake',
     name: 'Avaliações Fakes',
     tags: ['avaliacao', 'segurança', 'fake', 'refs'],
@@ -169,50 +144,77 @@ const CARDS = [
     image: 'https://imgur.com/yHpjCWO.png'
   },
 
-      {
+  {
     id: 'carrosel',
     name: 'Banner Carrosel',
-    tags: ['banner', 'carrosel', 'imagem', 'refs'],
+    tags: ['banner', 'carrosel', 'imagem'],
     badge: 'free',
-    category: 'layout',
+    category: 'banner',
     link: 'codigos/carrosel/index.html',
     image: 'https://imgur.com/hyPspMu.png'
   },
 
-        {
+  {
     id: 'banner-hero',
     name: 'Banner Hero',
-    tags: ['banner', 'hero', 'imagem', 'refs'],
+    tags: ['banner', 'hero', 'imagem'],
     badge: 'free',
-    category: 'layout',
+    category: 'banner',
     link: 'codigos/banner-hero/index.html',
     image: 'https://imgur.com/HxEAc1L.png'
   },
 
-          {
+  {
     id: 'banner-com-texto',
     name: 'Banner com Texto',
-    tags: ['banner', 'texto', 'imagem', 'refs'],
+    tags: ['banner', 'texto', 'imagem'],
     badge: 'free',
-    category: 'layout',
+    category: 'banner',
     link: 'codigos/banner-com-texto/index.html',
     image: 'https://imgur.com/3SelcCh.png'
   },
 
-
   // ─────────────────────────────────────────────────────────────
-  //  ➕ ADICIONE NOVOS CARDS AQUI — copie e preencha o bloco:
-  // ─────────────────────────────────────────────────────────────
+  //  ➕ ADICIONE NOVOS CARDS AQUI:
   // {
-  //   id: 'modal',
-  //   name: 'Modal / Popup',
-  //   tags: ['modal', 'popup', 'overlay'],
-  //   badge: 'new',
-  //   category: 'layout',
-  //   link: '/componente/modal',
-  //   image: ''
+  //   id: 'meu-componente',
+  //   name: 'Nome do Componente',
+  //   tags: ['tag1', 'tag2'],
+  //   badge: 'free',          // 'free' | 'new' | 'pro'
+  //   category: 'layout',     // 'banner' | 'navegacao' | 'produto' | 'layout'
+  //   link: 'codigos/meu-componente/index.html',
+  //   image: 'https://...'    // '' = placeholder
   // },
+  // ─────────────────────────────────────────────────────────────
 
+];
+
+
+// =============================================================
+//  COLABORADORES
+//  Para adicionar: copie um objeto e preencha os campos.
+//
+//  Campos:
+//    name     → nome exibido
+//    initials → iniciais do avatar (1-3 chars ou emoji)
+//    desc     → descrição (use \n para quebrar linha)
+//    role     → 'contributor' (amarelo) | 'supporter' (laranja)
+//    image    → URL da foto ('' = usa as iniciais)
+// =============================================================
+
+const COLABS = [
+  { name: 'REIZINHO DEV', initials: 'R',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'APX',          initials: 'A',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'NICKO',        initials: 'N',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'NESSO_DEV',    initials: 'NS', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'LENDA05961',   initials: 'L',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'CHORANAONPC',  initials: '⚡', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: '0.03Y',        initials: '0',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
+  { name: 'IMLYX7',       initials: 'IM', desc: 'Apoiador do Projeto',                    role: 'supporter',  image: '' },
+  { name: 'GSTDEV',       initials: 'G',  desc: 'Apoiador do Projeto',                    role: 'supporter',  image: '' },
+
+  // ➕ ADICIONE NOVOS COLABORADORES AQUI:
+  // { name: 'SEUNOME', initials: 'SN', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
 ];
 
 
@@ -220,20 +222,20 @@ const CARDS = [
 //  LÓGICA — não precisa mexer daqui pra baixo
 // =============================================================
 
-const BADGE_LABELS = { free: 'Grátis', new: 'Novo', pro: 'Pro' };
-const BADGE_CLASSES = { free: 'free', new: 'new', pro: 'pro' };
+const BADGE_LABELS  = { free: 'Grátis', new: 'Novo', pro: 'Pro' };
+const BADGE_CLASSES = { free: 'free',   new: 'new',  pro: 'pro' };
 
-// ── 1. MONTA O HTML DE CADA CARD ─────────────────────────────
+// ── 1. MONTA CARD DE COMPONENTE ──────────────────────────────
 
 function buildCard(card) {
-  const previewContent = card.image
+  const preview = card.image
     ? `<img src="${card.image}" alt="${card.name}" class="card-preview-img">`
     : `<div class="card-preview-placeholder"><span>SEM IMAGEM</span></div>`;
 
   return `
     <div class="code-card" data-id="${card.id}" data-category="${card.category}">
       <div class="card-preview">
-        ${previewContent}
+        ${preview}
         <div class="card-hover-overlay">
           <button class="gerar-btn">Gerar Código</button>
         </div>
@@ -247,21 +249,20 @@ function buildCard(card) {
           ${BADGE_LABELS[card.badge] || 'Grátis'}
         </span>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
-// ── 2. RENDERIZA O GRID (com filtro opcional) ─────────────────
+// ── 2. RENDERIZA O GRID DE COMPONENTES ───────────────────────
 
 function renderCards(filter = 'todos') {
-  const grid = document.getElementById('cardsGrid');
+  const grid     = document.getElementById('cardsGrid');
   const filtered = filter === 'todos' ? CARDS : CARDS.filter(c => c.category === filter);
 
   grid.innerHTML = filtered.map(buildCard).join('');
 
   grid.querySelectorAll('.code-card').forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
+    el.style.opacity    = '0';
+    el.style.transform  = 'translateY(24px)';
     el.style.transition = `opacity 0.45s ease ${i * 0.06}s, transform 0.45s ease ${i * 0.06}s`;
     scrollObserver.observe(el);
   });
@@ -272,29 +273,25 @@ function renderCards(filter = 'todos') {
 
 // ── 3. CURSOR CUSTOMIZADO ─────────────────────────────────────
 
-const cursor = document.getElementById('cursor');
+const cursor     = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
-let mx = -200, my = -200, rx = -200, ry = -200;
-let cursorVisible = false;
+let mx = -200, my = -200, rx = -200, ry = -200, cursorVisible = false;
 
-cursor.style.opacity = '0';
-cursorRing.style.opacity = '0';
+cursor.style.opacity = cursorRing.style.opacity = '0';
 
 document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
+  mx = e.clientX; my = e.clientY;
   cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
+  cursor.style.top  = my + 'px';
   if (!cursorVisible) {
-    cursor.style.opacity = '1';
+    cursor.style.opacity     = '1';
     cursorRing.style.opacity = '0.5';
     cursorVisible = true;
   }
 });
 
 document.addEventListener('mouseleave', () => {
-  cursor.style.opacity = '0';
-  cursorRing.style.opacity = '0';
+  cursor.style.opacity = cursorRing.style.opacity = '0';
   cursorVisible = false;
 });
 
@@ -302,23 +299,19 @@ document.addEventListener('mouseleave', () => {
   rx += (mx - rx) * 0.13;
   ry += (my - ry) * 0.13;
   cursorRing.style.left = rx + 'px';
-  cursorRing.style.top = ry + 'px';
+  cursorRing.style.top  = ry + 'px';
   requestAnimationFrame(animateRing);
 })();
 
 function bindCursorHover(els) {
   els.forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      cursorRing.style.width = '56px';
-      cursorRing.style.height = '56px';
+      cursor.style.width = cursor.style.height = '20px';
+      cursorRing.style.width = cursorRing.style.height = '56px';
     });
     el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      cursorRing.style.width = '36px';
-      cursorRing.style.height = '36px';
+      cursor.style.width = cursor.style.height = '12px';
+      cursorRing.style.width = cursorRing.style.height = '36px';
     });
   });
 }
@@ -340,7 +333,7 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
 function bindCardClicks() {
   document.querySelectorAll('.code-card').forEach(card => {
     const data = CARDS.find(c => c.id === card.dataset.id);
-    const url = data?.link || '#';
+    const url  = data?.link || '#';
 
     card.addEventListener('click', () => { window.location.href = url; });
 
@@ -358,12 +351,12 @@ document.querySelectorAll('.demo-tab').forEach(tab => {
   });
 });
 
-// ── 7. ANIMAÇÕES DE SCROLL ────────────────────────────────────
+// ── 7. SCROLL OBSERVER ───────────────────────────────────────
 
 const scrollObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
+      entry.target.style.opacity   = '1';
       entry.target.style.transform = 'translateY(0)';
       scrollObserver.unobserve(entry.target);
     }
@@ -371,33 +364,43 @@ const scrollObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll('.feature-item, .step').forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(24px)';
+  el.style.opacity    = '0';
+  el.style.transform  = 'translateY(24px)';
   el.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
   scrollObserver.observe(el);
 });
 
-// ── 8. INIT ───────────────────────────────────────────────────
+// ── 8. CARROSSEL DE COLABORADORES ────────────────────────────
+
+function buildColabCard(c) {
+  const avatar = c.image
+    ? `<img src="${c.image}" alt="${c.name}" class="colab-avatar">`
+    : `<div class="colab-avatar-fallback">${c.initials}</div>`;
+
+  const descHtml  = c.desc.replace(/\n/g, '<br>');
+  const roleLabel = c.role === 'supporter' ? 'Apoiador' : 'Contribuidor';
+
+  return `
+    <div class="colab-card">
+      <div class="colab-avatar-wrap">${avatar}</div>
+      <div class="colab-name">${c.name}</div>
+      <div class="colab-desc">${descHtml}</div>
+      <span class="colab-badge ${c.role}">${roleLabel}</span>
+    </div>`;
+}
+
+function initColabsCarousel() {
+  const track = document.getElementById('colabsTrack');
+  if (!track) return;
+
+  // Duplica os cards para o loop CSS infinito funcionar
+  const html = COLABS.map(buildColabCard).join('');
+  track.innerHTML = html + html;
+
+  bindCursorHover(track.querySelectorAll('.colab-card'));
+}
+
+// ── 9. INIT ───────────────────────────────────────────────────
 
 renderCards('todos');
-
-
-
-//remover header e footer
-const selectores = [
-  'header.sc-d92c5a35-0.lgbgZI',
-  'footer.sc-8a04aca7-0.WAVpc'
-];
-
-const removerElementos = () => {
-  selectores.forEach(sel => {
-    document.querySelector(sel)?.remove();
-  });
-};
-
-const observer = new MutationObserver(() => {
-  removerElementos();
-});
-
-observer.observe(document.documentElement, { childList: true, subtree: true });
-removerElementos();
+initColabsCarousel();
