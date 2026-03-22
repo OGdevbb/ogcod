@@ -174,6 +174,16 @@ const CARDS = [
     image: 'https://imgur.com/3SelcCh.png'
   },
 
+  {
+    id: 'footer-glass',
+    name: 'Footer Glass',
+    tags: ['footer', 'glass'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/footer-glass/index.html',
+    image: 'https://imgur.com/XvUN3hk.png'
+  }
+
   // ─────────────────────────────────────────────────────────────
   //  ➕ ADICIONE NOVOS CARDS AQUI:
   // {
