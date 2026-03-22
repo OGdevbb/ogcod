@@ -182,6 +182,16 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/footer-glass/index.html',
     image: 'https://imgur.com/XvUN3hk.png'
+  },
+
+  {
+    id: 'pills-categorias',
+    name: 'Pills de Categorias',
+    tags: ['pills', 'categorias', 'categoria'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/pills-categorias/index.html',
+    image: 'https://imgur.com/Z3Wzwcm.png'
   }
 
   // ─────────────────────────────────────────────────────────────

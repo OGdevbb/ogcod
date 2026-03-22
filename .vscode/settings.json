@@ -7,9 +7,12 @@
       }
     ]
   },
-  "taskButtons.tasks": [
+  "VsCodeTaskButtons.showCounter": true,
+  "VsCodeTaskButtons.tasks": [
     {
-      "label": "Criar componente"
+      "label": "$(add) Criar componente",
+      "task": "Criar componente",
+      "tooltip": "Criar novo componente"
     }
   ]
 }
