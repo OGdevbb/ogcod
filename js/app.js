@@ -210,8 +210,8 @@ const COLABS = [
   { name: 'LENDA05961',   initials: 'L',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
   { name: 'CHORANAONPC',  initials: '⚡', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
   { name: '0.03Y',        initials: '0',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
-  { name: 'IMLYX7',       initials: 'IM', desc: 'Apoiador do Projeto',                    role: 'supporter',  image: '' },
-  { name: 'GSTDEV',       initials: 'G',  desc: 'Apoiador do Projeto',                    role: 'supporter',  image: '' },
+  { name: 'IMLYX7',       initials: 'IM', desc: 'Criador de customizações',                    role: 'contributor',  image: '' },
+  { name: 'GSTDEV',       initials: 'G',  desc: 'Criador de customizações',                    role: 'contributor',  image: '' },
 
   // ➕ ADICIONE NOVOS COLABORADORES AQUI:
   // { name: 'SEUNOME', initials: 'SN', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
