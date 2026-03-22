@@ -205,7 +205,7 @@ const CARDS = [
   },
 
     {
-    id: 'nsagem-cupom',
+    id: 'mensagem-cupom',
     name: 'Mensagem de Cupom ao Entrar',
     tags: ['cupom', 'mensagem', 'log'],
     badge: 'free',
