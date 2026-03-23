@@ -480,7 +480,7 @@ initColabsCarousel();
 
 function scrollAteFinal() {
   const alturaTotal = document.body.scrollHeight;
-  const duracao = 3000; // tempo (ms) → quanto maior, mais lento
+  const duracao = 100000; // tempo (ms) → quanto maior, mais lento
   const inicio = window.scrollY;
   const distancia = alturaTotal - inicio;
   let inicioTempo = null;
