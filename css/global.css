@@ -658,21 +658,3 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 60
 
 
 
-.btn-scroll {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 18px;
-  background: #7c3aed;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  z-index: 9999;
-  transition: 0.3s;
-}
-
-.btn-scroll:hover {
-  background: #5b21b6;
-}

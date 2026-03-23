@@ -478,29 +478,3 @@ initColabsCarousel();
 
 
 
-function scrollAteFinal() {
-  const alturaTotal = document.body.scrollHeight;
-  const duracao = 10000; // tempo (ms) → quanto maior, mais lento
-  const inicio = window.scrollY;
-  const distancia = alturaTotal - inicio;
-  let inicioTempo = null;
-
-  function animarScroll(tempoAtual) {
-    if (!inicioTempo) inicioTempo = tempoAtual;
-    const progresso = tempoAtual - inicioTempo;
-
-    // easing (deixa mais suave)
-    const ease = progresso / duracao;
-    const suavizado = ease < 0.5
-      ? 2 * ease * ease
-      : 1 - Math.pow(-2 * ease + 2, 2) / 2;
-
-    window.scrollTo(0, inicio + distancia * suavizado);
-
-    if (progresso < duracao) {
-      requestAnimationFrame(animarScroll);
-    }
-  }
-
-  requestAnimationFrame(animarScroll);
-}
