@@ -212,6 +212,16 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/mensagem-cupom/index.html',
     image: 'https://imgur.com/WeHB4jq.png'
+  },
+
+      {
+    id: 'estilo-login',
+    name: 'Estilo de Login',
+    tags: ['login', 'entrar', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/estilo-login/index.html',
+    image: 'https://imgur.com/E9jPLQi.png'
   }
 
   // ─────────────────────────────────────────────────────────────
