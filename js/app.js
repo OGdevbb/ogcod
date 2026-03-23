@@ -221,7 +221,7 @@ const CARDS = [
     badge: 'free',
     category: 'layout',
     link: 'codigos/estilo-login/index.html',
-    image: 'https://imgur.com/aH2C7vo.png'
+    image: 'https://imgur.com/Qkey9yy.png'
   }
 
   // ─────────────────────────────────────────────────────────────
