@@ -274,7 +274,7 @@ function renderPreview() {
       'display:flex;' +
       'align-items:center;' +
       'justify-content:center;' +
-      'padding:24px;' +
+      'padding:28px;' +
       'font-family:Arial,sans-serif;' +
     '}' +
     '.preview-wrap{' +
@@ -285,9 +285,9 @@ function renderPreview() {
       'justify-content:center;' +
     '}' +
     '.product_card{' +
-      'width:260px;' +
-      'height:160px;' +
-      'padding:20px;' +
+      'width:230px;' +
+      'min-height:255px;' +
+      'padding:18px;' +
       'border-radius:' + borderRadius + ';' +
       'background:' +
         'radial-gradient(120% 140% at 10% 0%, rgba(255,255,255,' + bg1 + ') 0%, transparent 55%),' +
@@ -298,27 +298,53 @@ function renderPreview() {
       '-webkit-backdrop-filter:blur(' + blur + 'px);' +
       'display:flex;' +
       'flex-direction:column;' +
-      'justify-content:center;' +
-      'align-items:center;' +
+      'justify-content:flex-start;' +
       'color:#fff;' +
     '}' +
-    '.title{' +
-      'font-size:26px;' +
-      'font-weight:800;' +
-      'line-height:1;' +
-      'margin-bottom:10px;' +
+    '.product_image{' +
+      'width:100%;' +
+      'height:108px;' +
+      'border-radius:12px;' +
+      'margin-bottom:16px;' +
+      'background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));' +
+      'border:1px solid rgba(255,255,255,0.05);' +
     '}' +
-    '.sub{' +
+    '.product_title{' +
+      'font-size:13px;' +
+      'font-weight:700;' +
+      'line-height:1.4;' +
+      'margin-bottom:10px;' +
+      'color:#ffffff;' +
+    '}' +
+    '.product_price{' +
+      'font-size:15px;' +
+      'line-height:1;' +
+      'margin-bottom:18px;' +
+      'color:#ffffff;' +
+    '}' +
+    '.product_btn{' +
+      'margin-top:auto;' +
+      'height:40px;' +
+      'border-radius:12px;' +
+      'border:1px solid rgba(255,255,255,0.28);' +
+      'background:rgba(255,255,255,0.04);' +
+      'color:#ffffff;' +
       'font-size:12px;' +
-      'opacity:.72;' +
-      'letter-spacing:.08em;' +
+      'font-weight:800;' +
+      'letter-spacing:0.02em;' +
       'text-transform:uppercase;' +
+      'display:flex;' +
+      'align-items:center;' +
+      'justify-content:center;' +
+      'text-align:center;' +
     '}' +
     '</style></head><body>' +
       '<div class="preview-wrap">' +
         '<div class="product_card">' +
-          '<div class="title">Preview</div>' +
-          '<div class="sub">Glass claro suave</div>' +
+          '<div class="product_image"></div>' +
+          '<div class="product_title">Nome do Produto</div>' +
+          '<div class="product_price">R$ 29,90</div>' +
+          '<div class="product_btn">COMPRAR AGORA</div>' +
         '</div>' +
       '</div>' +
     '</body></html>';
