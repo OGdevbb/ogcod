@@ -222,6 +222,16 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/estilo-login/index.html',
     image: 'https://imgur.com/Qkey9yy.png'
+  },
+
+        {
+    id: 'botao-transparente',
+    name: 'Botão de Comprar Transparente',
+    tags: ['comprar', 'transparente', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/botao-transparente/index.html',
+    image: 'https://imgur.com/vqPDzGG.png'
   }
 
   // ─────────────────────────────────────────────────────────────
