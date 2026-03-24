@@ -248,7 +248,6 @@ function process(tpl, v) {
   return c.replace(/\n{3,}/g, '\n\n').trim();
 }
 
-// ── Preview ────────────────────────────────────────────
 function renderPreview() {
   var v = getVals();
   var box = document.getElementById('previewBox');
@@ -266,12 +265,28 @@ function renderPreview() {
 
   var doc =
     '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
     '<style>' +
     '*{box-sizing:border-box;margin:0;padding:0;}' +
-    'body{background:#0d0d0d;display:flex;align-items:flex-start;justify-content:flex-start;min-height:480px;padding:22px;font-family:system-ui,sans-serif;}' +
+    'html,body{width:100%;height:100%;overflow:hidden;}' +
+    'body{' +
+      'background:#0b0b0b;' +
+      'display:flex;' +
+      'align-items:center;' +
+      'justify-content:center;' +
+      'padding:24px;' +
+      'font-family:Arial,sans-serif;' +
+    '}' +
+    '.preview-wrap{' +
+      'width:100%;' +
+      'height:100%;' +
+      'display:flex;' +
+      'align-items:center;' +
+      'justify-content:center;' +
+    '}' +
     '.product_card{' +
-      'width:240px;' +
-      'min-height:140px;' +
+      'width:260px;' +
+      'height:160px;' +
       'padding:20px;' +
       'border-radius:' + borderRadius + ';' +
       'background:' +
@@ -281,15 +296,30 @@ function renderPreview() {
       'box-shadow:0 ' + sombraY + 'px ' + sombraBlur + 'px ' + corSombra + ', inset 0 1px 0 rgba(255,255,255,' + insetOpacity + ');' +
       'backdrop-filter:blur(' + blur + 'px);' +
       '-webkit-backdrop-filter:blur(' + blur + 'px);' +
-      'display:flex;flex-direction:column;justify-content:center;align-items:center;' +
+      'display:flex;' +
+      'flex-direction:column;' +
+      'justify-content:center;' +
+      'align-items:center;' +
       'color:#fff;' +
     '}' +
-    '.title{font-size:26px;font-weight:800;line-height:1;margin-bottom:8px;}' +
-    '.sub{font-size:12px;opacity:.72;letter-spacing:.08em;text-transform:uppercase;}' +
+    '.title{' +
+      'font-size:26px;' +
+      'font-weight:800;' +
+      'line-height:1;' +
+      'margin-bottom:10px;' +
+    '}' +
+    '.sub{' +
+      'font-size:12px;' +
+      'opacity:.72;' +
+      'letter-spacing:.08em;' +
+      'text-transform:uppercase;' +
+    '}' +
     '</style></head><body>' +
-      '<div class="product_card">' +
-        '<div class="title">Preview</div>' +
-        '<div class="sub">Glass claro suave</div>' +
+      '<div class="preview-wrap">' +
+        '<div class="product_card">' +
+          '<div class="title">Preview</div>' +
+          '<div class="sub">Glass claro suave</div>' +
+        '</div>' +
       '</div>' +
     '</body></html>';
 
@@ -297,7 +327,7 @@ function renderPreview() {
   if (old) old.remove();
 
   var iframe = document.createElement('iframe');
-  iframe.style.cssText = 'width:100%;height:480px;border:none;display:block;border-radius:14px;';
+  iframe.style.cssText = 'width:100%;height:460px;border:none;display:block;border-radius:14px;background:transparent;';
   iframe.setAttribute('sandbox', 'allow-scripts');
   iframe.srcdoc = doc;
   box.appendChild(iframe);
