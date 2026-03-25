@@ -3,450 +3,385 @@
 // =============================================================
 
 const COMPONENT = {
-  title: 'Card Transparente (Glass)',
-  description: 'Estiliza o card de produto com efeito vidro claro, borda suave, brilho fosco e blur. Sem alterar o restante da estrutura do site.',
-  tags: ['Card', 'Glass', 'CSS', 'Transparente', 'Gratis'],
+  title:       'Card Transparente (Glassmorphism)',
+  description: 'Card com efeito glassmorphism — fundo translucido, blur, borda sutil e gradiente radial. Ideal para hero sections, destaques de produto e layouts escuros.',
+  tags:        ['Card', 'Glass', 'Glassmorphism', 'CSS', 'Gratis'],
 
   fields: [
-    { id: 'bg1',          label: 'Intensidade Fundo 1',  type: 'text', placeholder: 'Ex: 0.40', default: '0.40', required: true  },
-    { id: 'bg2',          label: 'Intensidade Fundo 2',  type: 'text', placeholder: 'Ex: 0.15', default: '0.15', required: true  },
-    { id: 'bg3',          label: 'Intensidade Fundo 3',  type: 'text', placeholder: 'Ex: 0.05', default: '0.05', required: true  },
-    { id: 'bordaOpacity', label: 'Opacidade da Borda',   type: 'text', placeholder: 'Ex: 0.25', default: '0.25', required: true  },
-    { id: 'sombraY',      label: 'Sombra Y (px)',        type: 'text', placeholder: 'Ex: 8',    default: '8',    required: true  },
-    { id: 'sombraBlur',   label: 'Sombra Blur (px)',     type: 'text', placeholder: 'Ex: 18',   default: '18',   required: true  },
-    { id: 'corSombra',    label: 'Cor da Sombra (rgba)', type: 'text', placeholder: 'Ex: rgba(0,0,0,0.15)', default: 'rgba(0,0,0,0.15)', required: true },
-    { id: 'insetOpacity', label: 'Opacidade do Inset',   type: 'text', placeholder: 'Ex: 0.30', default: '0.30', required: true  },
-    { id: 'blur',         label: 'Blur (px)',            type: 'text', placeholder: 'Ex: 12',   default: '12',   required: true  },
-    { id: 'borderRadius', label: 'Border Radius',        type: 'text', placeholder: 'Ex: 16px', default: '16px', required: false }
-  ]
+    // Conteudo
+    { id: 'cardTitulo',    label: 'Titulo do Card',          type: 'text',  placeholder: 'Ex: Produto Premium', default: 'Produto Premium',         required: true  },
+    { id: 'cardDescricao', label: 'Descricao',                type: 'text',  placeholder: 'Texto descritivo...', default: 'Qualidade e design em um unico produto.', required: false },
+    { id: 'cardBadge',     label: 'Badge / Tag',             type: 'text',  placeholder: 'Ex: NOVO',            default: 'NOVO',                    required: false },
+    { id: 'cardBtnTexto',  label: 'Texto do Botao',          type: 'text',  placeholder: 'Ex: Ver mais',        default: 'Ver mais',                required: false },
+    { id: 'cardBtnLink',   label: 'Link do Botao',           type: 'text',  placeholder: 'https://...',         default: '#',                       required: false },
+
+    // Dimensoes
+    { id: 'cardWidth',        label: 'Largura do card',          type: 'text', placeholder: 'Ex: 360px',     default: '360px',           required: true  },
+    { id: 'cardPadding',      label: 'Padding interno',          type: 'text', placeholder: 'Ex: 28px 32px', default: '28px 32px',       required: false },
+    { id: 'cardBorderRadius', label: 'Border Radius',            type: 'text', placeholder: 'Ex: 20px',      default: '20px',            required: true  },
+
+    // Glassmorphism
+    { id: 'glassBlur',        label: 'Intensidade do blur (px)', type: 'text', placeholder: 'Ex: 12',        default: '12',              required: true  },
+    { id: 'glassBgLight',     label: 'Fundo claro — radial opacity', type: 'text', placeholder: 'Ex: 0.40', default: '0.40',             required: false },
+    { id: 'glassBgBase',      label: 'Fundo base opacity (topo)',    type: 'text', placeholder: 'Ex: 0.15', default: '0.15',             required: false },
+    { id: 'glassBgBottom',    label: 'Fundo base opacity (baixo)',   type: 'text', placeholder: 'Ex: 0.05', default: '0.05',             required: false },
+    { id: 'glassBorderAlpha', label: 'Borda opacity',               type: 'text', placeholder: 'Ex: 0.25', default: '0.25',             required: false },
+    { id: 'glassShadowAlpha', label: 'Sombra externa opacity',      type: 'text', placeholder: 'Ex: 0.15', default: '0.15',             required: false },
+    { id: 'glassInsetAlpha',  label: 'Reflexo interno opacity',     type: 'text', placeholder: 'Ex: 0.30', default: '0.30',             required: false },
+
+    // Cores
+    { id: 'corFundoPagina', label: 'Cor de fundo da pagina',  type: 'color', default: '#0f0f14' },
+    { id: 'corDestaque',    label: 'Cor de destaque',         type: 'color', default: '#7c6aff' },
+    { id: 'corTitulo',      label: 'Cor do titulo',           type: 'color', default: '#ffffff' },
+    { id: 'corTexto',       label: 'Cor do texto',            type: 'color', default: '#a0a0b0' },
+    { id: 'corBadgeBg',     label: 'Cor de fundo do badge',   type: 'color', default: '#7c6aff' },
+    { id: 'corBadgeTexto',  label: 'Cor do texto do badge',   type: 'color', default: '#ffffff' },
+    { id: 'corBtnBg',       label: 'Cor do botao',            type: 'color', default: '#7c6aff' },
+    { id: 'corBtnTexto',    label: 'Cor do texto do botao',   type: 'color', default: '#ffffff' },
+  ],
 };
 
-const BASE_HTML_B64 = '';
-const BASE_CSS_B64  = 'LnByb2R1Y3RfY2FyZCB7CiAgLyogMS4gRnVuZG8gdHJhbnNsw7pjaWRvIGNsYXJvICogLwogIGJhY2tncm91bmQ6CiAgICByYWRpYWwtZ3JhZGllbnQoMTIwJSAxNDAlIGF0IDEwJSAwJSwgcmdiYSgyNTUsIDI1NSwgMjU1LCB7e2JnMX19KSAwJSwgdHJhbnNwYXJlbnQgNTUlKSwKICAgIGxpbmVhci1ncmFkaWVudCgxMzVkZWcsIHJnYmEoMjU1LCAyNTUsIDI1NSwge3tiZzJ9fSkgMCUsIHJnYmEoMjU1LCAyNTUsIDI1NSwge3tiZzN9fSkgMTAwJSkgIWltcG9ydGFudDsKCiAgLyogMi4gQm9yZGEgKi8KICBib3JkZXI6IDFweCBzb2xpZCByZ2JhKDI1NSwgMjU1LCAyNTUsIHt7Ym9yZGFPcGFjaXR5fX0pICFpbXBvcnRhbnQ7CgogIC8qIDMuBTAgc29tYnJhIGV4dGVybmEgKi8KICBib3gtc2hhZG93OgogICAgMCB7e3NvbWJyYVl9fXB4IHt7c29tYnJhQmx1cn19cHgge3tjb3JTb21icmF9fSwKICAgIGluc2V0IDAgMXB4IDAgcmdiYSgyNTUsIDI1NSwgMjU1LCB7e2luc2V0T3BhY2l0eX19KSAhaW1wb3J0YW50OwoKICAvKiA0LiBCbHVyICovCiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKHt7Ymx1cn19cHgpICFpbXBvcnRhbnQ7CiAgLXdlYmtpdC1iYWNrZHJvcC1maWx0ZXI6IGJsdXIoe3tibHVyfX1weCkgIWltcG9ydGFudDsKCiAgYm9yZGVyLXJhZGl1czoge3tib3JkZXJSYWRpdXN9fSAhaW1wb3J0YW50Owp9';
-const BASE_JS_B64   = '';
+// ── Templates ─────────────────────────────────────────────────
+const BASE_HTML = `<div class="og-glass-wrap">
+  <div class="og-glass-card">
+    {{badge}}
+    <h3 class="og-glass-title">{{cardTitulo}}</h3>
+    {{descricao}}
+    {{botao}}
+  </div>
+</div>`;
 
-// =============================================================
-//  ENGINE
-// =============================================================
-
-function b64decode(str) {
-  if (!str) return '';
-  try {
-    return decodeURIComponent(
-      atob(str).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join('')
-    );
-  } catch (e) {
-    return atob(str);
-  }
+const BASE_CSS = `.og-glass-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 32px 16px;
+  background: {{corFundoPagina}};
 }
 
-const BASE_HTML = b64decode(BASE_HTML_B64);
-const BASE_CSS  = b64decode(BASE_CSS_B64);
-const BASE_JS   = b64decode(BASE_JS_B64);
+.og-glass-card {
+  width: {{cardWidth}};
+  max-width: 100%;
+  padding: {{cardPadding}};
+  border-radius: {{cardBorderRadius}};
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 
-// ── Cursor ─────────────────────────────────────────────
-const oC = document.getElementById('ogC');
-const oR = document.getElementById('ogR');
-var mx = -200, my = -200, rx = -200, ry = -200, cvis = false;
+  /* Glassmorphism */
+  background:
+    radial-gradient(120% 140% at 10% 0%, rgba(255,255,255,{{glassBgLight}}) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(255,255,255,{{glassBgBase}}) 0%, rgba(255,255,255,{{glassBgBottom}}) 100%);
+  border: 1px solid rgba(255,255,255,{{glassBorderAlpha}});
+  box-shadow:
+    0 8px 18px rgba(0,0,0,{{glassShadowAlpha}}),
+    inset 0 1px 0 rgba(255,255,255,{{glassInsetAlpha}});
+  backdrop-filter: blur({{glassBlur}}px);
+  -webkit-backdrop-filter: blur({{glassBlur}}px);
 
-document.addEventListener('mousemove', function (e) {
-  mx = e.clientX;
-  my = e.clientY;
-  if (oC) {
-    oC.style.left = mx + 'px';
-    oC.style.top = my + 'px';
-  }
-  if (!cvis && oC && oR) {
-    oC.style.opacity = '1';
-    oR.style.opacity = '0.5';
-    cvis = true;
-  }
-});
+  transition: transform .25s ease, box-shadow .25s ease;
+}
 
-document.addEventListener('mouseleave', function () {
-  if (oC && oR) {
-    oC.style.opacity = '0';
-    oR.style.opacity = '0';
-  }
-  cvis = false;
-});
+.og-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 36px rgba(0,0,0,{{glassShadowAlpha}}),
+    inset 0 1px 0 rgba(255,255,255,{{glassInsetAlpha}});
+}
 
-(function tick() {
-  rx += (mx - rx) * 0.13;
-  ry += (my - ry) * 0.13;
-  if (oR) {
-    oR.style.left = rx + 'px';
-    oR.style.top = ry + 'px';
-  }
-  requestAnimationFrame(tick);
-})();
+.og-glass-badge {
+  display: inline-block;
+  width: fit-content;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: {{corBadgeBg}};
+  color: {{corBadgeTexto}};
+}
 
-function hover(els) {
-  els.forEach(function (el) {
-    el.addEventListener('mouseenter', function () {
-      if (oC && oR) {
-        oC.style.width = '20px';
-        oC.style.height = '20px';
-        oR.style.width = '56px';
-        oR.style.height = '56px';
-      }
-    });
-    el.addEventListener('mouseleave', function () {
-      if (oC && oR) {
-        oC.style.width = '12px';
-        oC.style.height = '12px';
-        oR.style.width = '36px';
-        oR.style.height = '36px';
-      }
-    });
+.og-glass-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 800;
+  color: {{corTitulo}};
+  line-height: 1.15;
+}
+
+.og-glass-desc {
+  margin: 0;
+  font-size: .9rem;
+  color: {{corTexto}};
+  line-height: 1.6;
+}
+
+.og-glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 11px 24px;
+  border-radius: 12px;
+  background: {{corBtnBg}};
+  color: {{corBtnTexto}};
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: filter .2s, transform .2s;
+  margin-top: 4px;
+}
+
+.og-glass-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}`;
+
+const BASE_JS = ``;
+
+// ── Helpers ───────────────────────────────────────────────────
+function process(tpl, vals) {
+  var badgeHtml = vals.cardBadge
+    ? '<span class="og-glass-badge">' + vals.cardBadge + '</span>'
+    : '';
+  var descHtml = vals.cardDescricao
+    ? '<p class="og-glass-desc">' + vals.cardDescricao + '</p>'
+    : '';
+  var btnHtml = vals.cardBtnTexto
+    ? '<a class="og-glass-btn" href="' + vals.cardBtnLink + '">' + vals.cardBtnTexto + '</a>'
+    : '';
+
+  var r = tpl
+    .replace('{{badge}}', badgeHtml)
+    .replace('{{descricao}}', descHtml)
+    .replace('{{botao}}', btnHtml);
+
+  Object.keys(vals).forEach(function(k) {
+    r = r.split('{{' + k + '}}').join(vals[k]);
   });
+  return r;
 }
 
-hover(Array.from(document.querySelectorAll('a, button, input, .color-wrap')));
-
-// ── Metadados ──────────────────────────────────────────
-document.getElementById('bcTitle').textContent = COMPONENT.title;
-document.getElementById('compH1').textContent = COMPONENT.title;
-document.getElementById('compDesc').textContent = COMPONENT.description;
-
-COMPONENT.tags.forEach(function (t) {
-  var s = document.createElement('span');
-  s.className = 'ctag' + (t === 'Grátis' || t === 'Gratis' ? ' hl' : '');
-  s.textContent = t;
-  document.getElementById('compTags').appendChild(s);
-});
-
-// ── Render campos ──────────────────────────────────────
-var fw = document.getElementById('fieldsWrap');
-
-COMPONENT.fields.forEach(function (f) {
-  var g = document.createElement('div');
-  g.className = 'field-group';
-  g.dataset.fid = f.id;
-
-  var lb = document.createElement('label');
-  lb.className = 'field-lbl';
-  lb.textContent = f.label + (f.required ? ' *' : '');
-
-  if (f.type === 'color' && f.default && f.default.indexOf('rgba') === -1) {
-    var cw = document.createElement('div');
-    cw.className = 'color-wrap';
-
-    var nat = document.createElement('input');
-    nat.type = 'color';
-    nat.className = 'color-native';
-    nat.value = f.default;
-    nat.id = 'f_' + f.id;
-
-    var sw = document.createElement('div');
-    sw.className = 'color-swatch';
-    sw.style.background = f.default;
-
-    var hx = document.createElement('input');
-    hx.type = 'text';
-    hx.className = 'color-hex';
-    hx.value = f.default;
-    hx.maxLength = 7;
-
-    sw.onclick = function () { nat.click(); };
-    hx.onclick = function () { nat.click(); };
-
-    nat.oninput = function () {
-      sw.style.background = nat.value;
-      hx.value = nat.value;
-      renderPreview();
-    };
-
-    hx.oninput = function () {
-      if (/^#[0-9a-fA-F]{6}$/.test(hx.value)) {
-        nat.value = hx.value;
-        sw.style.background = hx.value;
-        renderPreview();
-      }
-    };
-
-    cw.appendChild(nat);
-    cw.appendChild(sw);
-    cw.appendChild(hx);
-
-    g.appendChild(lb);
-    g.appendChild(cw);
-  } else {
-    var inp = document.createElement('input');
-    inp.type = 'text';
-    inp.className = 'field-inp';
-    inp.placeholder = f.placeholder || '';
-    inp.value = f.default || '';
-    inp.id = 'f_' + f.id;
-    inp.oninput = renderPreview;
-
-    var er = document.createElement('span');
-    er.className = 'field-err';
-    er.textContent = '"' + f.label + '" é obrigatório.';
-
-    g.appendChild(lb);
-    g.appendChild(inp);
-    g.appendChild(er);
-  }
-
-  fw.appendChild(g);
-  hover([g]);
-});
-
-// ── Helpers ────────────────────────────────────────────
 function getVals() {
   var v = {};
-  COMPONENT.fields.forEach(function (f) {
+  COMPONENT.fields.forEach(function(f) {
     var el = document.getElementById('f_' + f.id);
-    v[f.id] = el ? el.value.trim() : '';
+    if (!el) return;
+    if (f.type === 'color') {
+      var hex = document.getElementById('fhex_' + f.id);
+      v[f.id] = hex ? hex.value : el.value;
+    } else {
+      v[f.id] = el.value.trim() || f.default || '';
+    }
   });
   return v;
 }
 
 function validate(v) {
   var ok = true;
-
-  COMPONENT.fields.forEach(function (f) {
+  COMPONENT.fields.forEach(function(f) {
     if (!f.required) return;
-
-    var inp = document.getElementById('f_' + f.id);
-    var er = fw.querySelector('[data-fid="' + f.id + '"] .field-err');
-
-    if (!v[f.id]) {
-      if (inp) inp.classList.add('has-err');
-      if (er) er.classList.add('show');
-      ok = false;
-
-      if (inp) {
-        inp.addEventListener('input', function () {
-          if (inp.value.trim()) {
-            inp.classList.remove('has-err');
-            if (er) er.classList.remove('show');
-          }
-        }, { once: true });
-      }
-    } else {
-      if (inp) inp.classList.remove('has-err');
-      if (er) er.classList.remove('show');
-    }
+    var el = document.getElementById('f_' + f.id);
+    var errEl = document.getElementById('ferr_' + f.id);
+    var empty = !v[f.id];
+    if (el) el.classList.toggle('has-err', empty);
+    if (errEl) errEl.classList.toggle('show', empty);
+    if (empty) ok = false;
   });
-
   return ok;
 }
 
-function process(tpl, v) {
-  var c = tpl.replace(/\/\* IF:(\w+) \*\/([\s\S]*?)\/\* ENDIF \*\//g, function (_, k, b) {
-    return v[k] ? b : '';
+// ── Render Fields ─────────────────────────────────────────────
+(function renderFields() {
+  document.getElementById('bcTitle').textContent  = COMPONENT.title;
+  document.getElementById('compH1').textContent   = COMPONENT.title;
+  document.getElementById('compDesc').textContent = COMPONENT.description;
+
+  var tagsEl = document.getElementById('compTags');
+  COMPONENT.tags.forEach(function(t) {
+    var s = document.createElement('span');
+    s.className = 'ctag' + (t === 'Gratis' ? ' hl' : '');
+    s.textContent = t;
+    tagsEl.appendChild(s);
   });
 
-  c = c.replace(/\{\{(\w+)\}\}/g, function (_, k) {
-    return v[k] || '';
+  var wrap = document.getElementById('fieldsWrap');
+  COMPONENT.fields.forEach(function(f) {
+    var g = document.createElement('div');
+    g.className = 'field-group';
+
+    var lbl = document.createElement('label');
+    lbl.className = 'field-lbl';
+    lbl.setAttribute('for', 'f_' + f.id);
+    lbl.textContent = f.label;
+    g.appendChild(lbl);
+
+    if (f.type === 'color') {
+      var cw = document.createElement('div');
+      cw.className = 'color-wrap';
+      cw.onclick = function() { document.getElementById('fcol_' + f.id).click(); };
+
+      var swatch = document.createElement('div');
+      swatch.className = 'color-swatch';
+      swatch.id = 'fswatch_' + f.id;
+      swatch.style.background = f.default;
+
+      var hex = document.createElement('input');
+      hex.type = 'text';
+      hex.className = 'color-hex';
+      hex.id = 'fhex_' + f.id;
+      hex.value = f.default;
+      hex.maxLength = 7;
+
+      var native = document.createElement('input');
+      native.type = 'color';
+      native.className = 'color-native';
+      native.id = 'fcol_' + f.id;
+      native.value = f.default;
+
+      native.oninput = function() {
+        swatch.style.background = native.value;
+        hex.value = native.value;
+        renderPreview();
+      };
+      hex.oninput = function() {
+        var val = hex.value.startsWith('#') ? hex.value : '#' + hex.value;
+        if (/^#[0-9a-fA-F]{6}$/.test(val)) {
+          native.value = val;
+          swatch.style.background = val;
+          renderPreview();
+        }
+      };
+
+      cw.appendChild(swatch);
+      cw.appendChild(hex);
+      cw.appendChild(native);
+      g.appendChild(cw);
+    } else {
+      var inp = document.createElement('input');
+      inp.type = 'text';
+      inp.className = 'field-inp';
+      inp.id = 'f_' + f.id;
+      inp.placeholder = f.placeholder || '';
+      inp.value = f.default || '';
+      inp.oninput = function() { renderPreview(); };
+      g.appendChild(inp);
+
+      var err = document.createElement('span');
+      err.className = 'field-err';
+      err.id = 'ferr_' + f.id;
+      err.textContent = 'Campo obrigatorio';
+      g.appendChild(err);
+    }
+
+    wrap.appendChild(g);
   });
+})();
 
-  return c.replace(/\n{3,}/g, '\n\n').trim();
-}
-
+// ── Preview ───────────────────────────────────────────────────
 function renderPreview() {
   var v = getVals();
   var box = document.getElementById('previewBox');
 
-  var bg1          = v.bg1 || '0.40';
-  var bg2          = v.bg2 || '0.15';
-  var bg3          = v.bg3 || '0.05';
-  var bordaOpacity = v.bordaOpacity || '0.25';
-  var sombraY      = v.sombraY || '8';
-  var sombraBlur   = v.sombraBlur || '18';
-  var corSombra    = v.corSombra || 'rgba(0,0,0,0.15)';
-  var insetOpacity = v.insetOpacity || '0.30';
-  var blur         = v.blur || '12';
-  var borderRadius = v.borderRadius || '16px';
+  var htmlSnip = process(BASE_HTML, v);
+  var cssSnip  = process(BASE_CSS, v);
 
-  var doc =
-    '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
-    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
-    '<style>' +
-    '*{box-sizing:border-box;margin:0;padding:0;}' +
-    'html,body{width:100%;height:100%;overflow:hidden;}' +
-    'body{' +
-      'background:#0b0b0b;' +
-      'display:flex;' +
-      'align-items:center;' +
-      'justify-content:center;' +
-      'padding:28px;' +
-      'font-family:Arial,sans-serif;' +
-    '}' +
-    '.preview-wrap{' +
-      'width:100%;' +
-      'height:100%;' +
-      'display:flex;' +
-      'align-items:center;' +
-      'justify-content:center;' +
-    '}' +
-    '.product_card{' +
-      'width:230px;' +
-      'min-height:255px;' +
-      'padding:18px;' +
-      'border-radius:' + borderRadius + ';' +
-      'background:' +
-        'radial-gradient(120% 140% at 10% 0%, rgba(255,255,255,' + bg1 + ') 0%, transparent 55%),' +
-        'linear-gradient(135deg, rgba(255,255,255,' + bg2 + ') 0%, rgba(255,255,255,' + bg3 + ') 100%);' +
-      'border:1px solid rgba(255,255,255,' + bordaOpacity + ');' +
-      'box-shadow:0 ' + sombraY + 'px ' + sombraBlur + 'px ' + corSombra + ', inset 0 1px 0 rgba(255,255,255,' + insetOpacity + ');' +
-      'backdrop-filter:blur(' + blur + 'px);' +
-      '-webkit-backdrop-filter:blur(' + blur + 'px);' +
-      'display:flex;' +
-      'flex-direction:column;' +
-      'justify-content:flex-start;' +
-      'color:#fff;' +
-    '}' +
-    '.product_image{' +
-      'width:100%;' +
-      'height:108px;' +
-      'border-radius:12px;' +
-      'margin-bottom:16px;' +
-      'background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));' +
-      'border:1px solid rgba(255,255,255,0.05);' +
-    '}' +
-    '.product_title{' +
-      'font-size:13px;' +
-      'font-weight:700;' +
-      'line-height:1.4;' +
-      'margin-bottom:10px;' +
-      'color:#ffffff;' +
-    '}' +
-    '.product_price{' +
-      'font-size:15px;' +
-      'line-height:1;' +
-      'margin-bottom:18px;' +
-      'color:#ffffff;' +
-    '}' +
-    '.product_btn{' +
-      'margin-top:auto;' +
-      'height:40px;' +
-      'border-radius:12px;' +
-      'border:1px solid rgba(255,255,255,0.28);' +
-      'background:rgba(255,255,255,0.04);' +
-      'color:#ffffff;' +
-      'font-size:12px;' +
-      'font-weight:800;' +
-      'letter-spacing:0.02em;' +
-      'text-transform:uppercase;' +
-      'display:flex;' +
-      'align-items:center;' +
-      'justify-content:center;' +
-      'text-align:center;' +
-    '}' +
-    '</style></head><body>' +
-      '<div class="preview-wrap">' +
-        '<div class="product_card">' +
-          '<div class="product_image"></div>' +
-          '<div class="product_title">Nome do Produto</div>' +
-          '<div class="product_price">R$ 29,90</div>' +
-          '<div class="product_btn">COMPRAR AGORA</div>' +
-        '</div>' +
-      '</div>' +
-    '</body></html>';
+  var doc = '<!DOCTYPE html><html><head><meta charset="UTF-8">'
+    + '<style>*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif;}'
+    + 'body{background:' + v.corFundoPagina + ';display:flex;align-items:center;justify-content:center;min-height:460px;}'
+    + cssSnip
+    + '</style></head><body>'
+    + htmlSnip
+    + '</body></html>';
 
   var old = box.querySelector('iframe');
   if (old) old.remove();
-
   var iframe = document.createElement('iframe');
-  iframe.style.cssText = 'width:100%;height:460px;border:none;display:block;border-radius:14px;background:transparent;';
+  iframe.style.cssText = 'width:100%;height:460px;border:none;display:block;border-radius:14px;';
   iframe.setAttribute('sandbox', 'allow-scripts');
   iframe.srcdoc = doc;
   box.appendChild(iframe);
 }
 
-// ── Modal ──────────────────────────────────────────────
-var modal = document.getElementById('modal');
+// ── Modal ─────────────────────────────────────────────────────
+var modal   = document.getElementById('modal');
 var codePre = document.getElementById('codePre');
 var copyBtn = document.getElementById('copyBtn');
-var curTab = 'html';
-var gen = { html: '', css: '', js: '' };
+var curTab  = 'html';
+var gen     = { html: '', css: '', js: '' };
 
-document.getElementById('genBtn').onclick = function () {
+document.getElementById('genBtn').onclick = function() {
   var v = getVals();
   if (!validate(v)) return;
 
   gen.html = process(BASE_HTML, v);
   gen.css  = process(BASE_CSS, v);
-  gen.js   = process(BASE_JS, v);
+  gen.js   = BASE_JS;
 
-  var firstFilled = ['html', 'css', 'js'].find(function (t) {
-    return gen[t].length > 0;
-  }) || 'html';
+  var firstFilled = ['html', 'css', 'js'].find(function(t) { return gen[t].length > 0; }) || 'html';
 
-  document.querySelectorAll('.code-tab').forEach(function (t) {
+  document.querySelectorAll('.code-tab').forEach(function(t) {
     t.classList.toggle('filled', gen[t.dataset.tab].length > 0);
   });
-
   showTab(firstFilled);
   modal.classList.add('open');
 };
 
 function showTab(tab) {
   curTab = tab;
-
-  document.querySelectorAll('.code-tab').forEach(function (t) {
-    t.classList.toggle('active', t.dataset.tab === tab);
-  });
-
+  document.querySelectorAll('.code-tab').forEach(function(t) { t.classList.toggle('active', t.dataset.tab === tab); });
   var code = gen[tab];
-
   if (!code) {
-    codePre.innerHTML =
-      '<div class="empty-state">' +
-        '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">' +
-          '<path d="M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>' +
-        '</svg>' +
-        'Nenhum código ' + tab.toUpperCase() + ' para este componente.' +
-      '</div>';
+    codePre.innerHTML = '<div class="empty-state"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>Nenhum código ' + tab.toUpperCase() + ' para este componente.</div>';
     copyBtn.style.display = 'none';
     return;
   }
-
   codePre.textContent = code;
   copyBtn.style.display = 'inline-flex';
 }
 
-document.querySelectorAll('.code-tab').forEach(function (t) {
-  t.onclick = function () {
-    showTab(t.dataset.tab);
-  };
-});
+document.querySelectorAll('.code-tab').forEach(function(t) { t.onclick = function() { showTab(t.dataset.tab); }; });
+document.getElementById('modalClose').onclick = function() { modal.classList.remove('open'); };
+modal.onclick = function(e) { if (e.target === modal) modal.classList.remove('open'); };
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') modal.classList.remove('open'); });
 
-document.getElementById('modalClose').onclick = function () {
-  modal.classList.remove('open');
-};
-
-modal.onclick = function (e) {
-  if (e.target === modal) modal.classList.remove('open');
-};
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') modal.classList.remove('open');
-});
-
-copyBtn.onclick = function () {
-  navigator.clipboard.writeText(gen[curTab]).then(function () {
+copyBtn.onclick = function() {
+  navigator.clipboard.writeText(gen[curTab]).then(function() {
     copyBtn.classList.add('copied');
-    copyBtn.innerHTML =
-      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
-        '<polyline points="20 6 9 17 4 12"/>' +
-      '</svg> Copiado!';
-
-    setTimeout(function () {
+    copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copiado!';
+    setTimeout(function() {
       copyBtn.classList.remove('copied');
-      copyBtn.innerHTML =
-        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">' +
-          '<rect x="9" y="9" width="13" height="13" rx="2"/>' +
-          '<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>' +
-        '</svg> Copiar';
+      copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copiar';
     }, 2000);
   });
 };
 
-// ── Init ───────────────────────────────────────────────
+// ── Cursor ────────────────────────────────────────────────────
+(function() {
+  var c = document.getElementById('ogC');
+  var r = document.getElementById('ogR');
+  if (!c || !r) return;
+  var mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    c.style.opacity = '1'; r.style.opacity = '1';
+    c.style.left = mx + 'px'; c.style.top = my + 'px';
+  });
+  (function loop() {
+    rx += (mx - rx) * .12; ry += (my - ry) * .12;
+    r.style.left = rx + 'px'; r.style.top = ry + 'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,input').forEach(function(el) {
+    el.addEventListener('mouseenter', function() { c.style.width = '20px'; c.style.height = '20px'; });
+    el.addEventListener('mouseleave', function() { c.style.width = '12px'; c.style.height = '12px'; });
+  });
+})();
+
+// ── Init ─────────────────────────────────────────────────────
 renderPreview();
