@@ -1,77 +1,56 @@
-(function() {
-'use strict';
-
 // =============================================================
-//  OG! — botao-transparente.js (MOD COM VERIFIED)
+//  OG! — verificado.js
 // =============================================================
 
 const COMPONENT = {
-  title:       'Botao de Compra Transparente',
-  description: 'Estiliza o botao de comprar dos cards de produto da Ereemby com fundo dark/transparente, borda sutil, efeito shine e animacao de hover. Sem alterar o restante do card.',
-  tags:        ['Botao', 'Comprar', 'CSS', 'Hover', 'Shine', 'Gratis'],
+  title:       'Selo Verificado',
+  description: 'Adiciona um selo de verificado ao lado do nome da loja no header. Imagem, tamanho, opacidade e filtro customizaveis. Aguarda o elemento aparecer via MutationObserver.',
+  tags:        ['Verificado', 'Badge', 'Header', 'JS', 'Gratis'],
 
   fields: [
-    { id: 'background', label: 'Fundo do Botao', type: 'text', default: 'linear-gradient(135deg, #2a2a2a, #0a0a0a)', required: true },
-    { id: 'espessuraBorda', label: 'Espessura da Borda (px)', type: 'text', default: '1', required: true },
-    { id: 'corBorda', label: 'Cor da Borda (rgba)', type: 'text', default: 'rgba(255,255,255,0.2)' },
-    { id: 'corBordaHover', label: 'Cor da Borda Hover', type: 'text', default: 'rgba(255,255,255,0.3)' },
-    { id: 'borderRadius', label: 'Border Radius', type: 'text', default: '12px', required: true },
-    { id: 'padding', label: 'Padding', type: 'text', default: '10px 12px', required: true },
-    { id: 'marginTop', label: 'Margin Top', type: 'text', default: '12px' },
-    { id: 'corTexto', label: 'Cor do Texto', type: 'color', default: '#ffffff' },
-    { id: 'pesoTexto', label: 'Peso da Fonte', type: 'text', default: '750' },
-    { id: 'tamanhoTexto', label: 'Tamanho da Fonte', type: 'text', default: '11px', required: true }
-  ]
+    // Seletor
+    { id: 'seletorNomeLoja', label: 'Seletor CSS do nome da loja', type: 'text',
+      placeholder: 'Ex: header a[href="/"] span',
+      default:     'header a[href="/"] span',
+      required: true },
+
+    // Imagem
+    { id: 'urlImagem', label: 'URL da imagem do selo', type: 'text',
+      placeholder: 'https://...',
+      default: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Verification-badge.png',
+      required: true },
+    { id: 'textoAlt', label: 'Texto alternativo (alt)', type: 'text',
+      placeholder: 'Ex: Verificado', default: 'Verificado', required: false },
+
+    // Tamanho e posicao
+    { id: 'tamanho',    label: 'Tamanho (largura e altura)', type: 'text', placeholder: 'Ex: 20px', default: '20px', required: true  },
+    { id: 'marginLeft', label: 'Margem esquerda',            type: 'text', placeholder: 'Ex: 4px',  default: '4px',  required: false },
+    { id: 'gap',        label: 'Gap entre nome e selo',      type: 'text', placeholder: 'Ex: 4px',  default: '4px',  required: false },
+
+    // Efeitos
+    { id: 'opacidade', label: 'Opacidade (0 a 1)',  type: 'text', placeholder: 'Ex: 1',    default: '1',    required: false },
+    { id: 'filtro',    label: 'Filter CSS (opcional)', type: 'text',
+      placeholder: 'Ex: drop-shadow(0 0 4px #1da1f2)',
+      default: 'none', required: false },
+  ],
 };
 
 const BASE_HTML_B64 = '';
-const BASE_CSS_B64  = '...'; // mantem o seu atual
-const BASE_JS_B64   = '';
+const BASE_CSS_B64  = '';
+const BASE_JS_B64   = 'KGZ1bmN0aW9uICgpIHsKICAndXNlIHN0cmljdCc7CgogIGlmICh3aW5kb3cub2dWZXJpZmljYWRvSW5pY2lhZG8pIHJldHVybjsKICB3aW5kb3cub2dWZXJpZmljYWRvSW5pY2lhZG8gPSB0cnVlOwoKICBmdW5jdGlvbiBvZ0FkZEJhZGdlKCkgewogICAgdmFyIGVsID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcigne3tzZWxldG9yTm9tZUxvamF9fScpOwogICAgaWYgKCFlbCB8fCBlbC5jbGFzc0xpc3QuY29udGFpbnMoJ29nLWJhZGdlLWFwbGljYWRvJykpIHJldHVybjsKCiAgICB2YXIgYmFkZ2UgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdpbWcnKTsKICAgIGJhZGdlLnNyYyA9ICd7e3VybEltYWdlbX19JzsKICAgIGJhZGdlLmFsdCA9ICd7e3RleHRvQWx0fX0nOwogICAgYmFkZ2Uuc3R5bGUuY3NzVGV4dCA9CiAgICAgICd3aWR0aDp7e3RhbWFuaG99fTtoZWlnaHQ6e3t0YW1hbmhvfX07JwogICAgICArICd2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7JwogICAgICArICdtYXJnaW4tbGVmdDp7e21hcmdpbkxlZnR9fTsnCiAgICAgICsgJ2Rpc3BsYXk6aW5saW5lLWJsb2NrOycKICAgICAgKyAnZmxleC1zaHJpbms6MDsnCiAgICAgICsgJ2ZpbHRlcjp7e2ZpbHRyb319OycKICAgICAgKyAnb3BhY2l0eTp7e29wYWNpZGFkZX19Oyc7CgogICAgZWwuYXBwZW5kQ2hpbGQoYmFkZ2UpOwogICAgZWwuY2xhc3NMaXN0LmFkZCgnb2ctYmFkZ2UtYXBsaWNhZG8nKTsKICAgIGVsLnN0eWxlLmRpc3BsYXkgPSAnaW5saW5lLWZsZXgnOwogICAgZWwuc3R5bGUuYWxpZ25JdGVtcyA9ICdjZW50ZXInOwogICAgZWwuc3R5bGUuZ2FwID0gJ3t7Z2FwfX0nOwogIH0KCiAgZnVuY3Rpb24gb2dTdGFydE9ic2VydmVyKCkgewogICAgaWYgKCFkb2N1bWVudC5ib2R5KSB7IHNldFRpbWVvdXQob2dTdGFydE9ic2VydmVyLCAxMDApOyByZXR1cm47IH0KICAgIHZhciBvYnMgPSBuZXcgTXV0YXRpb25PYnNlcnZlcihmdW5jdGlvbigpIHsgb2dBZGRCYWRnZSgpOyB9KTsKICAgIG9icy5vYnNlcnZlKGRvY3VtZW50LmJvZHksIHsgY2hpbGRMaXN0OiB0cnVlLCBzdWJ0cmVlOiB0cnVlIH0pOwogICAgb2dBZGRCYWRnZSgpOwogIH0KCiAgaWYgKGRvY3VtZW50LnJlYWR5U3RhdGUgPT09ICdsb2FkaW5nJykgewogICAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIG9nU3RhcnRPYnNlcnZlcik7CiAgfSBlbHNlIHsKICAgIG9nU3RhcnRPYnNlcnZlcigpOwogIH0KfSkoKTs=';
 
 // =============================================================
-// 🔥 SELO DE VERIFICADO (NOVO)
+//  ENGINE — não mexa abaixo desta linha
 // =============================================================
 
-(function () {
-    'use strict';
-
-    function addVerifiedBadge() {
-        const storeNameSelector = 'header a[href="/"] span';
-        const storeNameElement = document.querySelector(storeNameSelector);
-
-        if (!storeNameElement || storeNameElement.classList.contains('badge-applied')) {
-            return;
-        }
-
-        const badge = document.createElement('img');
-        badge.src = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg';
-        badge.alt = 'Verificado';
-        badge.style.cssText = 'width:17px;height:17px;vertical-align:middle;margin-left:5px;display:inline-block;';
-
-        storeNameElement.appendChild(badge);
-        storeNameElement.classList.add('badge-applied');
-        storeNameElement.style.display = 'inline-flex';
-        storeNameElement.style.alignItems = 'center';
-    }
-
-    const observer = new MutationObserver(addVerifiedBadge);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    addVerifiedBadge();
-})();
-
-// =============================================================
-// RESTO DO SISTEMA (INALTERADO)
-// =============================================================
-
-// Decodificador base64
+// Decodifica base64 → string (suporte a UTF-8)
 function b64decode(str) {
   if (!str) return '';
   try {
     return decodeURIComponent(
-      atob(str).split('').map(c =>
-        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-      ).join('')
+      atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join('')
     );
   } catch(e) {
     return atob(str);
@@ -82,20 +61,231 @@ const BASE_HTML = b64decode(BASE_HTML_B64);
 const BASE_CSS  = b64decode(BASE_CSS_B64);
 const BASE_JS   = b64decode(BASE_JS_B64);
 
-// Preview continua funcionando normalmente
+// ── Cursor ───────────────────────────────────────────────────
+const oC = document.getElementById('ogC');
+const oR = document.getElementById('ogR');
+var mx = -200, my = -200, rx = -200, ry = -200, cvis = false;
+
+document.addEventListener('mousemove', function(e) {
+  mx = e.clientX; my = e.clientY;
+  oC.style.left = mx + 'px'; oC.style.top = my + 'px';
+  if (!cvis) { oC.style.opacity = '1'; oR.style.opacity = '0.5'; cvis = true; }
+});
+document.addEventListener('mouseleave', function() {
+  oC.style.opacity = oR.style.opacity = '0'; cvis = false;
+});
+(function tick() {
+  rx += (mx - rx) * .13; ry += (my - ry) * .13;
+  oR.style.left = rx + 'px'; oR.style.top = ry + 'px';
+  requestAnimationFrame(tick);
+})();
+
+function hover(els) {
+  els.forEach(function(el) {
+    el.addEventListener('mouseenter', function() { oC.style.width = oC.style.height = '20px'; oR.style.width = oR.style.height = '56px'; });
+    el.addEventListener('mouseleave', function() { oC.style.width = oC.style.height = '12px'; oR.style.width = oR.style.height = '36px'; });
+  });
+}
+hover(document.querySelectorAll('a, button'));
+
+// ── Metadados ────────────────────────────────────────────────
+document.getElementById('bcTitle').textContent  = COMPONENT.title;
+document.getElementById('compH1').textContent   = COMPONENT.title;
+document.getElementById('compDesc').textContent = COMPONENT.description;
+COMPONENT.tags.forEach(function(t) {
+  var s = document.createElement('span');
+  s.className = 'ctag' + (t === 'Grátis' ? ' hl' : '');
+  s.textContent = t;
+  document.getElementById('compTags').appendChild(s);
+});
+
+// ── Renderiza campos ─────────────────────────────────────────
+var fw = document.getElementById('fieldsWrap');
+
+COMPONENT.fields.forEach(function(f) {
+  var g = document.createElement('div');
+  g.className = 'field-group';
+  g.dataset.fid = f.id;
+
+  var lb = document.createElement('label');
+  lb.className = 'field-lbl';
+  lb.textContent = f.label + (f.required ? ' *' : '');
+
+  if (f.type === 'color' && f.default && f.default.indexOf('rgba') === -1) {
+    var cw  = document.createElement('div');   cw.className = 'color-wrap';
+    var nat = document.createElement('input'); nat.type = 'color'; nat.className = 'color-native'; nat.value = f.default; nat.id = 'f_' + f.id;
+    var sw  = document.createElement('div');   sw.className = 'color-swatch'; sw.style.background = f.default;
+    var hx  = document.createElement('input'); hx.type = 'text'; hx.className = 'color-hex'; hx.value = f.default; hx.maxLength = 7;
+
+    sw.onclick = function() { nat.click(); };
+    hx.onclick = function() { nat.click(); };
+    nat.oninput = function() { sw.style.background = nat.value; hx.value = nat.value; renderPreview(); };
+    hx.oninput  = function() { if (/^#[0-9a-fA-F]{6}$/.test(hx.value)) { nat.value = hx.value; sw.style.background = hx.value; renderPreview(); } };
+
+    cw.appendChild(nat); cw.appendChild(sw); cw.appendChild(hx);
+    g.appendChild(lb); g.appendChild(cw);
+  } else {
+    // campo de texto normal (também usado para cores rgba ou campos type:'text')
+    var inp = document.createElement('input');
+    inp.type = 'text'; inp.className = 'field-inp';
+    inp.placeholder = f.placeholder || ''; inp.value = f.default || ''; inp.id = 'f_' + f.id;
+    inp.oninput = renderPreview;
+
+    var er = document.createElement('span');
+    er.className = 'field-err';
+    er.textContent = '"' + f.label + '" é obrigatório.';
+
+    g.appendChild(lb); g.appendChild(inp); g.appendChild(er);
+  }
+
+  fw.appendChild(g);
+  hover([g]);
+});
+
+// ── Lê valores ───────────────────────────────────────────────
+function getVals() {
+  var v = {};
+  COMPONENT.fields.forEach(function(f) {
+    var el = document.getElementById('f_' + f.id);
+    v[f.id] = el ? el.value.trim() : '';
+  });
+  return v;
+}
+
+// ── Validação ────────────────────────────────────────────────
+function validate(v) {
+  var ok = true;
+  COMPONENT.fields.forEach(function(f) {
+    if (!f.required) return;
+    var inp = document.getElementById('f_' + f.id);
+    var er  = fw.querySelector('[data-fid="' + f.id + '"] .field-err');
+    if (!v[f.id]) {
+      if (inp) inp.classList.add('has-err');
+      if (er)  er.classList.add('show');
+      ok = false;
+      if (inp) inp.addEventListener('input', function() {
+        if (inp.value.trim()) { inp.classList.remove('has-err'); if (er) er.classList.remove('show'); }
+      }, { once: true });
+    } else {
+      if (inp) inp.classList.remove('has-err');
+      if (er)  er.classList.remove('show');
+    }
+  });
+  return ok;
+}
+
+// ── Template engine ──────────────────────────────────────────
+function process(tpl, v) {
+  var c = tpl.replace(/\/\* IF:(\w+) \*\/([\s\S]*?)\/\* ENDIF \*\//g, function(_, k, b) { return v[k] ? b : ''; });
+  c = c.replace(/\{\{(\w+)\}\}/g, function(_, k) { return v[k] || ''; });
+  return c.replace(/\n{3,}/g, '\n\n').trim();
+}
+
+// ── Preview ao vivo ───────────────────────────────────────────
 function renderPreview() {
-  const box = document.getElementById('previewBox');
-  if (!box) return;
+  var v   = getVals();
+  var box = document.getElementById('previewBox');
 
-  const iframe = document.createElement('iframe');
-  iframe.style.cssText = 'width:100%;height:480px;border:none;';
-  iframe.srcdoc = '<html><body style="background:#111;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100%;">Preview OK</body></html>';
+  var url      = v.urlImagem    || 'https://upload.wikimedia.org/wikipedia/commons/1/12/Verification-badge.png';
+  var alt      = v.textoAlt     || 'Verificado';
+  var tamanho  = v.tamanho      || '20px';
+  var marginL  = v.marginLeft   || '4px';
+  var gap      = v.gap          || '4px';
+  var opacity  = v.opacidade    || '1';
+  var filtro   = v.filtro       || 'none';
 
-  box.innerHTML = '';
+  var doc =
+    '<!DOCTYPE html><html><head><meta charset="UTF-8">'
+    + '<style>'
+    + '*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif;}'
+    + 'body{background:#0a0a0a;min-height:480px;display:flex;flex-direction:column;}'
+    + '.header{background:#111;border-bottom:1px solid #1e1e1e;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}'
+    + '.store-name{display:inline-flex;align-items:center;gap:' + gap + ';color:#fff;font-size:1rem;font-weight:700;text-decoration:none;}'
+    + '.badge{width:' + tamanho + ';height:' + tamanho + ';display:inline-block;flex-shrink:0;vertical-align:middle;margin-left:' + marginL + ';filter:' + filtro + ';opacity:' + opacity + ';}'
+    + '.nav-links{display:flex;gap:20px;}'
+    + '.nav-links a{color:#666;font-size:.85rem;text-decoration:none;}'
+    + '.content{flex:1;display:flex;align-items:center;justify-content:center;color:#333;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;}'
+    + '.arrow{margin-top:24px;padding:16px 24px;background:#111;border-top:1px solid #1e1e1e;display:flex;align-items:center;gap:10px;}'
+    + '.arrow-label{color:#555;font-size:.75rem;}'
+    + '.arrow-badge{display:inline-flex;align-items:center;gap:' + gap + ';background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:8px 14px;color:#fff;font-size:.9rem;font-weight:600;}'
+    + '</style></head><body>'
+    + '<div class="header">'
+      + '<a class="store-name">'
+        + 'Nome da Loja'
+        + '<img class="badge" src="' + url + '" alt="' + alt + '">'
+      + '</a>'
+      + '<div class="nav-links">'
+        + '<a>Produtos</a><a>Contato</a><a>Carrinho</a>'
+      + '</div>'
+    + '</div>'
+    + '<div class="content">Conteudo da loja</div>'
+    + '<div class="arrow">'
+      + '<span class="arrow-label">👆 Assim fica o nome da loja com o selo:</span>'
+      + '<span class="arrow-badge">Nome da Loja <img src="' + url + '" alt="' + alt + '" style="width:' + tamanho + ';height:' + tamanho + ';filter:' + filtro + ';opacity:' + opacity + ';flex-shrink:0;"></span>'
+    + '</div>'
+    + '</body></html>';
+
+  var old = box.querySelector('iframe');
+  if (old) old.remove();
+  var iframe = document.createElement('iframe');
+  iframe.style.cssText = 'width:100%;height:480px;border:none;display:block;border-radius:14px;';
+  iframe.setAttribute('sandbox', 'allow-scripts');
+  iframe.srcdoc = doc;
   box.appendChild(iframe);
 }
 
-// Init
-renderPreview();
+// ── Modal ────────────────────────────────────────────────────
+var modal   = document.getElementById('modal');
+var codePre = document.getElementById('codePre');
+var copyBtn = document.getElementById('copyBtn');
+var curTab  = 'html';
+var gen     = { html: '', css: '', js: '' };
 
-})();
+document.getElementById('genBtn').onclick = function() {
+  var v = getVals();
+  if (!validate(v)) return;
+
+  gen.html = process(BASE_HTML, v);
+  gen.css  = process(BASE_CSS,  v);
+  gen.js   = process(BASE_JS,   v);
+
+  var firstFilled = ['html', 'css', 'js'].find(function(t) { return gen[t].length > 0; }) || 'html';
+
+  document.querySelectorAll('.code-tab').forEach(function(t) {
+    t.classList.toggle('filled', gen[t.dataset.tab].length > 0);
+  });
+  showTab(firstFilled);
+  modal.classList.add('open');
+};
+
+function showTab(tab) {
+  curTab = tab;
+  document.querySelectorAll('.code-tab').forEach(function(t) { t.classList.toggle('active', t.dataset.tab === tab); });
+  var code = gen[tab];
+  if (!code) {
+    codePre.innerHTML = '<div class="empty-state"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>Nenhum código ' + tab.toUpperCase() + ' para este componente.</div>';
+    copyBtn.style.display = 'none';
+    return;
+  }
+  codePre.textContent = code;
+  copyBtn.style.display = 'inline-flex';
+}
+
+document.querySelectorAll('.code-tab').forEach(function(t) { t.onclick = function() { showTab(t.dataset.tab); }; });
+document.getElementById('modalClose').onclick = function() { modal.classList.remove('open'); };
+modal.onclick = function(e) { if (e.target === modal) modal.classList.remove('open'); };
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') modal.classList.remove('open'); });
+
+copyBtn.onclick = function() {
+  navigator.clipboard.writeText(gen[curTab]).then(function() {
+    copyBtn.classList.add('copied');
+    copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copiado!';
+    setTimeout(function() {
+      copyBtn.classList.remove('copied');
+      copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copiar';
+    }, 2000);
+  });
+};
+
+// ── Init ─────────────────────────────────────────────────────
+renderPreview();
