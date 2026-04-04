@@ -232,6 +232,16 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/botao-transparente/index.html',
     image: 'https://imgur.com/vqPDzGG.png'
+  },
+
+          {
+    id: 'tema-3',
+    name: 'Banners Vertical',
+    tags: ['banner', 'vertical', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/tema-3/index.html',
+    image: 'https://imgur.com/d55cTxd.png'
   }
 
   // ─────────────────────────────────────────────────────────────
