@@ -138,26 +138,38 @@ function renderPreview() {
   var box = document.getElementById('previewBox');
 
   var doc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-    body { margin: 0; background: #05050a; color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 32px; font-family: system-ui, sans-serif; }
-    .container { width: 100%; max-width: 820px; display: grid; gap: 22px; }
-    .card { background: rgba(17, 19, 30, .98); border: 1px solid rgba(255,255,255,.08); border-radius: 28px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.35); }
-    .card-header { padding: 32px 34px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; background: linear-gradient(180deg, rgba(232,255,0,.12), transparent); }
-    .title { margin: 0; font-size: 2rem; font-weight: 800; line-height: 1.05; }
-    .subtitle { margin: 14px 0 0; color: #9aa0c5; font-size: .95rem; line-height: 1.75; max-width: 560px; }
-    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px; background: rgba(232,255,0,.14); color: #e8ff00; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
-    .option-list { padding: 24px 34px 34px; display: grid; gap: 14px; }
-    .option { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 20px; transition: transform .2s, border-color .2s; cursor: pointer; }
-    .option:hover { transform: translateY(-2px); border-color: rgba(232,255,0,.2); }
-    .dot { width: 14px; height: 14px; border-radius: 50%; background: #e8ff00; box-shadow: 0 0 16px rgba(232,255,0,.28); }
-    .option h3 { margin: 0; font-size: 1rem; font-weight: 800; }
-    .option p { margin: .35rem 0 0; color: #9aa0c5; font-size: .9rem; line-height: 1.6; }
+    body { margin: 0; background: #080808; color: #f0f0f0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; font-family: system-ui, sans-serif; }
+    .frame { width: 100%; max-width: 900px; background: rgba(11,12,18,.98); border: 1px solid rgba(255,255,255,.06); border-radius: 28px; overflow: hidden; box-shadow: 0 32px 90px rgba(0,0,0,.35); }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-size: .95rem; text-transform: uppercase; letter-spacing: .16em; }
+    .brand b { color: #fff; }
+    .brand span { background: rgba(232,255,0,.16); color: #e8ff00; padding: 4px 12px; border-radius: 999px; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+    .nav { display: flex; gap: 20px; color: #7b7f99; font-size: .82rem; }
+    .nav span { opacity: .72; }
+    .frame-body { padding: 28px 28px 32px; }
+    .preview-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+    .preview-header h2 { margin: 0; font-size: 2rem; line-height: 1.05; color: #fff; }
+    .preview-header p { margin: 10px 0 0; color: #9aa0c5; font-size: .95rem; line-height: 1.7; max-width: 560px; }
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 999px; background: rgba(232,255,0,.14); color: #e8ff00; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; }
+    .block { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 28px; display: grid; gap: 18px; }
+    .block-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .block-title { margin: 0; color: #fff; font-size: .95rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .block-meta { color: #7b7f99; font-size: .82rem; }
+    .item { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; transition: transform .2s, border-color .2s; cursor: pointer; }
+    .item:hover { transform: translateY(-2px); border-color: rgba(232,255,0,.2); }
+    .item-left { display: flex; align-items: center; gap: 16px; }
+    .item-dot { width: 14px; height: 14px; border-radius: 50%; background: #e8ff00; box-shadow: 0 0 18px rgba(232,255,0,.25); }
+    .item-text h3 { margin: 0; font-size: 1rem; font-weight: 800; color: #fff; }
+    .item-text p { margin: .35rem 0 0; color: #9aa0c5; font-size: .9rem; line-height: 1.6; }
     input[type="radio"] { accent-color: #e8ff00; width: 18px; height: 18px; }
-  </style></head><body><div class="container"><div class="card"><div class="card-header"><div><h1 class="title">Preview de variáveis</h1><p class="subtitle">Veja o efeito neon de seleção aplicado a opções estilizadas, com foco em bordas suaves e contraste moderno.</p></div><span class="badge">Design Verificado</span></div><div class="option-list"><label class="option"><span class="dot"></span><div><h3>Opção ativa</h3><p>Seleção brilhante com efeito neon e destaque.</p></div><input type="radio" name="demo" checked></label><label class="option"><span class="dot"></span><div><h3>Opção secundária</h3><p>Mais suave, mantém a aparência escura e elegante.</p></div><input type="radio" name="demo"></label><label class="option"><span class="dot"></span><div><h3>Opção alternativa</h3><p>Boa para variantes, labels e temas customizados.</p></div><input type="radio" name="demo"></label></div></div></div><script>${BASE_JS}<\/script></body></html>`;
+    .preview-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; color: #7b7f99; font-size: .82rem; border-top: 1px solid rgba(255,255,255,.06); margin-top: 12px; }
+    .preview-footer strong { color: #fff; }
+  </style></head><body><div class="frame"><div class="topbar"><div class="brand"><b>Nome da Loja</b><span>Verificado</span></div><div class="nav"><span>Produtos</span><span>Contato</span><span>Carrinho</span></div></div><div class="frame-body"><div class="preview-header"><div><h2>Preview de variáveis</h2><p>Veja o efeito neon de seleção aplicado a opções estilizadas, com foco em bordas suaves e contraste moderno.</p></div><span class="badge">Design Verificado</span></div><div class="block"><div class="block-top"><p class="block-title">Opções ativadas</p><span class="block-meta">Status: ativo</span></div><label class="item"><div class="item-left"><span class="item-dot"></span><div class="item-text"><h3>Opção ativa</h3><p>Seleção brilhante com efeito neon e destaque.</p></div></div><input type="radio" name="demo" checked></label><label class="item"><div class="item-left"><span class="item-dot"></span><div class="item-text"><h3>Opção secundária</h3><p>Mais suave, mantém a aparência escura e elegante.</p></div></div><input type="radio" name="demo"></label><label class="item"><div class="item-left"><span class="item-dot"></span><div class="item-text"><h3>Opção alternativa</h3><p>Boa para variantes, labels e temas customizados.</p></div></div><input type="radio" name="demo"></label></div><div class="preview-footer"><span>Conteúdo da loja</span><strong>✓ Visual pronto</strong></div></div></div><script>${BASE_JS} <\/script></body></html>`;
 
   var old = box.querySelector('iframe');
   if (old) old.remove();
   var iframe = document.createElement('iframe');
-  iframe.style.cssText = 'width:100%;height:520px;border:none;display:block;border-radius:18px;overflow:hidden;';
+  iframe.style.cssText = 'width:100%;height:560px;border:none;display:block;border-radius:18px;overflow:hidden;';
   iframe.setAttribute('sandbox', 'allow-scripts');
   iframe.srcdoc = doc;
   box.appendChild(iframe);
