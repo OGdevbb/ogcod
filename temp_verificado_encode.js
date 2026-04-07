@@ -1,0 +1,116 @@
+const fs = require('fs');
+const code = `(function () {
+    'use strict';
+
+    const CONFIG = {
+        badgeId: 'gusta-verified-badge',
+        styleId: 'gusta-verified-styles',
+        targetSelector: '.sc-d92c5a35-2.kPuaEa span'
+    };
+
+    function injectStyles() {
+        if (document.getElementById(CONFIG.styleId)) return;
+
+        const style = document.createElement('style');
+        style.id = CONFIG.styleId;
+        style.textContent = `
+      .gusta-verified-name {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+      }
+
+      .gusta-verified-badge {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: #3897f0;
+        box-shadow:
+          0 0 10px rgba(56, 151, 240, 0.30),
+          0 0 18px rgba(56, 151, 240, 0.16);
+      }
+
+      .gusta-verified-badge svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        display: block;
+        overflow: visible;
+        transform: translate(-50%, -50%);
+      }
+
+      .gusta-verified-badge path {
+        stroke: #ffffff;
+        stroke-width: 3.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+    `;
+
+        document.head.appendChild(style);
+    }
+
+    function createBadge() {
+        const badge = document.createElement('span');
+        badge.id = CONFIG.badgeId;
+        badge.className = 'gusta-verified-badge';
+        badge.setAttribute('title', 'Verificado');
+        badge.setAttribute('aria-label', 'Verificado');
+
+        badge.innerHTML = `
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M7 12.5L10.3 15.8L17 8.8"></path>
+      </svg>
+    `;
+
+        return badge;
+    }
+
+    function applyBadge() {
+        const nameElement = document.querySelector(CONFIG.targetSelector);
+        if (!nameElement) return;
+        if (document.getElementById(CONFIG.badgeId)) return;
+
+        nameElement.classList.add('gusta-verified-name');
+        nameElement.appendChild(createBadge());
+    }
+
+    function observeChanges() {
+        const observer = new MutationObserver(() => {
+            applyBadge();
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    function init() {
+        injectStyles();
+        applyBadge();
+        setTimeout(applyBadge, 400);
+        setTimeout(applyBadge, 1000);
+        observeChanges();
+    }
+
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+        init();
+    }
+})();`;
+console.log(Buffer.from(code, 'utf8').toString('base64'));
