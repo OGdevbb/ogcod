@@ -1,6 +1,6 @@
 ﻿const COMPONENT = {
   title: 'Variáveis V1',
-  description: 'Gerador de estilo neon azul com variáveis CSS e efeitos animados. Use o código abaixo para aplicar o design em seus próprios elementos.',
+  description: 'Use o código abaixo para aplicar o estilo neon nas suas opções.',
   tags: ['variáveis', 'css', 'neon', 'javascript', 'grátis'],
   fields: [],
 };
@@ -23,243 +23,137 @@ const BASE_HTML = `
 `;
 
 const BASE_CSS = `
-:root {
-  --b: 2px;
-  --g: 1px;
-  --s: 13deg;
-  --f: 20px;
-  --fw: 700;
-  --c: 5px;
-  --cr: 30px;
-  --cr2: 50px;
-  --br: 12px;
-  --rw: 0.74;
-  --h: 72px;
-  --s1: 218 90% 65%;
-  --s2: 190 92% 75%;
-  --s3: 204 82% 74%;
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 3rem;
-  text-rendering: optimizeLegibility;
-  background: radial-gradient(circle at 50% 0%, rgb(6 9 35 / 0.25), transparent 40%),
-              radial-gradient(circle at 20% 20%, rgb(55 119 232 / 0.16), transparent 25%),
-              radial-gradient(circle at 80% 25%, rgb(189 108 239 / 0.1), transparent 18%),
-              #040613;
-}
-
-.variaveis-box {
-  width: min(740px, 100%);
-  min-height: 500px;
-  background: radial-gradient(circle at 50% 0%, rgb(63 166 255 / 0.12), transparent 29%),
-              linear-gradient(180deg, rgba(5, 12, 26, 0.84), rgba(7, 13, 30, 0.88));
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 2rem;
-  padding: 2.5rem;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px rgb(28 107 255 / 0.03), 0 0 40px rgb(46 138 255 / 0.14);
-}
-
-.variaveis-area {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 0 1rem;
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  padding: 2rem;
+  background: #070816;
+  color: #fff;
+  font-family: sans-serif;
 }
 
-.variaveis-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  min-height: var(--h);
-  padding: 0 1.5rem;
-  border-radius: var(--cr2);
-  color: hsla(var(--s1), 1);
-  font-size: clamp(1.1rem, 1.85vw, 1.7rem);
-  font-weight: var(--fw);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  background: radial-gradient(circle at 50% 30%, rgb(84 200 255 / 0.22), transparent 38%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  border: solid 1px rgba(255, 255, 255, 0.08);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-.variaveis-item::before,
-.variaveis-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-
-.variaveis-item::before {
-  transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.08) 70%, transparent 100%);
-  animation: shine 2.8s linear infinite;
-}
-
-.variaveis-item::after {
-  inset: 1px;
-  background: linear-gradient(0deg, rgba(255,255,255,0.08), transparent 18%);
-}
-
-.variaveis-item span {
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@media (max-width: 720px) {
-  .variaveis-area {
-    gap: 1rem;
-  }
-
-  .variaveis-item {
-    min-width: 136px;
-    padding: 0 1rem;
-  }
+.og-variaveis-demo {
+  width: min(680px, 100%);
+  display: grid;
+  gap: 14px;
 }
 `;
 
-const BASE_JS = `(function () {
-  const css = \`
-:root {
-  --b: 2px;
-  --g: 1px;
-  --s: 13deg;
-  --f: 20px;
-  --fw: 700;
-  --c: 5px;
-  --cr: 30px;
-  --cr2: 50px;
-  --br: 12px;
-  --rw: 0.74;
-  --h: 72px;
-  --s1: 218 90% 65%;
-  --s2: 190 92% 75%;
-  --s3: 204 82% 74%;
-}
-
-* {
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 3rem;
-  text-rendering: optimizeLegibility;
-  background: radial-gradient(circle at 50% 0%, rgb(6 9 35 / 0.25), transparent 40%),
-              radial-gradient(circle at 20% 20%, rgb(55 119 232 / 0.16), transparent 25%),
-              radial-gradient(circle at 80% 25%, rgb(189 108 239 / 0.1), transparent 18%),
-              #040613;
-}
-
-.variaveis-box {
-  width: min(740px, 100%);
-  min-height: 500px;
-  background: radial-gradient(circle at 50% 0%, rgb(63 166 255 / 0.12), transparent 29%),
-              linear-gradient(180deg, rgba(5, 12, 26, 0.84), rgba(7, 13, 30, 0.88));
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 2rem;
-  padding: 2.5rem;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px rgb(28 107 255 / 0.03), 0 0 40px rgb(46 138 255 / 0.14);
-}
-
-.variaveis-area {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 0 1rem;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.variaveis-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  min-height: var(--h);
-  padding: 0 1.5rem;
-  border-radius: var(--cr2);
-  color: hsla(var(--s1), 1);
-  font-size: clamp(1.1rem, 1.85vw, 1.7rem);
-  font-weight: var(--fw);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  background: radial-gradient(circle at 50% 30%, rgb(84 200 255 / 0.22), transparent 38%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  border: solid 1px rgba(255, 255, 255, 0.08);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-.variaveis-item::before,
-.variaveis-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-
-.variaveis-item::before {
-  transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.08) 70%, transparent 100%);
-  animation: shine 2.8s linear infinite;
-}
-
-.variaveis-item::after {
-  inset: 1px;
-  background: linear-gradient(0deg, rgba(255,255,255,0.08), transparent 18%);
-}
-
-@keyframes shine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-@media (max-width: 720px) {
-  .variaveis-area {
-    gap: 1rem;
-  }
-
-  .variaveis-item {
-    min-width: 136px;
-    padding: 0 1rem;
-  }
-}
-  \`;
-
-  const style = document.createElement('style');
-  style.textContent = css;
-  document.head.appendChild(style);
-})();`;
+const BASE_JS = "(function () {\n" +
+"    const css = `\n" +
+"  /* =========================\n" +
+"     CONTAINER\n" +
+"  ========================= */\n" +
+"  .item, label[class*=\"item\"], div[class*=\"Item\"] {\n" +
+"    border: 2px solid #2d2d2d !important;\n" +
+"    border-radius: 10px !important;\n" +
+"    padding: 16px 20px 16px 60px !important;\n" +
+"    cursor: pointer;\n" +
+"    position: relative;\n" +
+"    background: #1a1a1a !important;\n" +
+"    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n" +
+"    display: block;\n" +
+"    margin-bottom: 12px;\n" +
+"    color: #ffffff;\n" +
+"    font-family: sans-serif;\n" +
+"  }\n\n" +
+"  /* =========================\n" +
+"     HOVER OG!\n" +
+"  ========================= */\n" +
+"  .item:hover, label[class*=\"item\"]:hover {\n" +
+"    border-color: #8a2eff !important;\n" +
+"    box-shadow: 0 0 15px rgba(138, 46, 255, 0.25);\n" +
+"    transform: translateX(5px);\n" +
+"  }\n\n" +
+"  .item input, label input[type=\"radio\"] {\n" +
+"    display: none !important;\n" +
+"  }\n\n" +
+"  /* =========================\n" +
+"     🔵 BOLHA NEON BASE\n" +
+"  ========================= */\n" +
+"  .item::before, label[class*=\"item\"]::before {\n" +
+"    content: '';\n" +
+"    width: 14px;\n" +
+"    height: 14px;\n" +
+"    background: #8a2eff;\n" +
+"    position: absolute;\n" +
+"    left: 20px;\n" +
+"    top: 50%;\n" +
+"    transform: translateY(-50%);\n" +
+"    border-radius: 50%;\n" +
+"    transition: all 0.3s ease;\n" +
+"    box-shadow:\n" +
+"      0 0 6px rgba(138, 46, 255, 0.7),\n" +
+"      0 0 12px rgba(138, 46, 255, 0.5);\n" +
+"  }\n\n" +
+"  /* =========================\n" +
+"     AURA EXTERNA (GLOW)\n" +
+"  ========================= */\n" +
+"  .item::after, label[class*=\"item\"]::after {\n" +
+"    content: '';\n" +
+"    width: 40px;\n" +
+"    height: 40px;\n" +
+"    position: absolute;\n" +
+"    left: 7px;\n" +
+"    top: 50%;\n" +
+"    transform: translateY(-50%);\n" +
+"    border-radius: 50%;\n" +
+"    background: radial-gradient(circle, rgba(138,46,255,0.8) 0%, transparent 70%);\n" +
+"    opacity: 0;\n" +
+"    transition: 0.3s;\n" +
+"    filter: blur(10px);\n" +
+"  }\n\n" +
+"  /* =========================\n" +
+"     SELECIONADO\n" +
+"  ========================= */\n" +
+"  label[class*=\"item\"]:has(input:checked),\n" +
+"  .item:has(input:checked) {\n" +
+"    border-color: #8a2eff !important;\n" +
+"    background: #252525 !important;\n" +
+"  }\n\n" +
+"  label[class*=\"item\"]:has(input:checked)::before,\n" +
+"  .item:has(input:checked)::before {\n" +
+"    background: #a855f7;\n" +
+"    box-shadow:\n" +
+"      0 0 10px #a855f7,\n" +
+"      0 0 20px #a855f7,\n" +
+"      0 0 35px #8a2eff,\n" +
+"      0 0 60px rgba(138, 46, 255, 0.9);\n" +
+"    transform: translateY(-50%) scale(1.25);\n" +
+"    animation: ogPulse 1.5s infinite ease-in-out;\n" +
+"  }\n\n" +
+"  label[class*=\"item\"]:has(input:checked)::after,\n" +
+"  .item:has(input:checked)::after {\n" +
+"    opacity: 1;\n" +
+"  }\n\n" +
+"  @keyframes ogPulse {\n" +
+"    0% {\n" +
+"      box-shadow:\n" +
+"        0 0 10px #a855f7,\n" +
+"        0 0 20px #8a2eff,\n" +
+"        0 0 30px rgba(138, 46, 255, 0.7);\n" +
+"    }\n" +
+"    50% {\n" +
+"      box-shadow:\n" +
+"        0 0 20px #c084fc,\n" +
+"        0 0 40px #a855f7,\n" +
+"        0 0 70px rgba(168, 85, 247, 1);\n" +
+"    }\n" +
+"    100% {\n" +
+"      box-shadow:\n" +
+"        0 0 10px #a855f7,\n" +
+"        0 0 20px #8a2eff,\n" +
+"        0 0 30px rgba(138, 46, 255, 0.7);\n" +
+"    }\n" +
+"  }\n" +
+"  `;\n\n" +
+"    const style = document.createElement('style');\n" +
+"    style.innerHTML = css;\n" +
+"    document.head.appendChild(style);\n" +
+"})();";
 
 const STATE = {
   activeTab: 'html',
