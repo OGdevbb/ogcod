@@ -6,14 +6,19 @@
 };
 
 const BASE_HTML = `
-<div class="variaveis-box">
-  <div class="variaveis-area">
-    <div class="variaveis-item">EXEMPLO</div>
-    <div class="variaveis-item">DE</div>
-    <div class="variaveis-item">VARIÁVEIS</div>
-    <div class="variaveis-item">CSS</div>
-    <div class="variaveis-item">NEON</div>
-  </div>
+<div class="og-variaveis-demo">
+  <label class="item" for="op1">
+    <input type="radio" name="og-item" id="op1">
+    Opção 1
+  </label>
+  <label class="item" for="op2">
+    <input type="radio" name="og-item" id="op2">
+    Opção 2
+  </label>
+  <label class="item" for="op3">
+    <input type="radio" name="og-item" id="op3">
+    Opção 3
+  </label>
 </div>
 `;
 
