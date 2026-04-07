@@ -295,7 +295,7 @@ function renderPreview() {
 function openModal() {
   const modal = document.getElementById('modal');
   const codePre = document.getElementById('codePre');
-  const htmlCode = `<div class="variaveis-box">${BASE_HTML.trim()}\n</div>`;
+  const htmlCode = BASE_HTML.trim();
   const cssCode = BASE_CSS.trim();
   const jsCode = BASE_JS.trim();
 
