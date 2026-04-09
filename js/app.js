@@ -274,6 +274,16 @@ const CARDS = [
     image: 'https://imgur.com/3z317Wg.png'
   },
 
+                  {
+    id: 'verificadoani',
+    name: 'Verificado Animado',
+    tags: ['verificado', 'animado', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/verificadoani/index.html',
+    image: 'https://imgur.com/FqvN9HJ.png'
+  },
+
   // ─────────────────────────────────────────────────────────────
   //  ➕ ADICIONE NOVOS CARDS AQUI:
   // {
