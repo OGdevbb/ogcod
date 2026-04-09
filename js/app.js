@@ -313,6 +313,7 @@ const COLABS = [
   { name: 'IMLYX7',       initials: 'IM', desc: 'Criador de customizações',               role: 'contributor',  image: '' },
   { name: 'GSTDEV',       initials: 'G',  desc: 'Criador de customizações',               role: 'contributor',  image: '' },
   { name: 'Luisxz',       initials: 'L',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor',  image: 'https://imgur.com/DyWSQbZ.png' },
+  { name: 'Gusta',       initials: 'G',  desc: 'Criador de customizações\npara Ereemby', role: 'contributor',  image: 'https://imgur.com/LDP9MSt.png' },
 
   // ➕ ADICIONE NOVOS COLABORADORES AQUI:
   // { name: 'SEUNOME', initials: 'SN', desc: 'Criador de customizações\npara Ereemby', role: 'contributor', image: '' },
