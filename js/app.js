@@ -256,7 +256,7 @@ const CARDS = [
 
               {
     id: 'verificado',
-    name: 'Variaveis Bonitas',
+    name: 'Verificado',
     tags: ['verificado', 'loja', 'estilo'],
     badge: 'free',
     category: 'layout',
@@ -266,7 +266,7 @@ const CARDS = [
 
                 {
     id: 'pillsv2',
-    name: 'Variaveis Bonitas',
+    name: 'Categirias Estilizadas',
     tags: ['pills', 'categorias', 'estilo'],
     badge: 'free',
     category: 'layout',
