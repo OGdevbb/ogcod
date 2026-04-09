@@ -242,7 +242,37 @@ const CARDS = [
     category: 'layout',
     link: 'codigos/tema-3/index.html',
     image: 'https://imgur.com/d55cTxd.png'
-  }
+  },
+
+            {
+    id: 'variaveisv1',
+    name: 'Variaveis Bonitas',
+    tags: ['variaveis', 'bonitas', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/variaveisv1/index.html',
+    image: 'https://imgur.com/O9s0pNE.png'
+  },
+
+              {
+    id: 'verificado',
+    name: 'Variaveis Bonitas',
+    tags: ['verificado', 'loja', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/verificado/index.html',
+    image: 'https://imgur.com/79YdS7h.png'
+  },
+
+                {
+    id: 'pillsv2',
+    name: 'Variaveis Bonitas',
+    tags: ['pills', 'categorias', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/pillsv2/index.html',
+    image: 'https://imgur.com/3z317Wg.png'
+  },
 
   // ─────────────────────────────────────────────────────────────
   //  ➕ ADICIONE NOVOS CARDS AQUI:
