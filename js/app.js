@@ -284,6 +284,16 @@ const CARDS = [
     image: 'https://imgur.com/FqvN9HJ.png'
   },
 
+                    {
+    id: 'removerpowered',
+    name: 'Remover "Powered by Ereemby"',
+    tags: ['remover', 'powered', 'ereemby'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/removerpowered/index.html',
+    image: 'https://imgur.com/hzvh8FN.png'
+  },
+
   // ─────────────────────────────────────────────────────────────
   //  ➕ ADICIONE NOVOS CARDS AQUI:
   // {
