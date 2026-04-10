@@ -161,65 +161,15 @@ function renderPreview() {
   var v   = getVals();
   var box = document.getElementById('previewBox');
 
-  var corFundo       = v.corFundo         || '#050505';
-  var corRadialC     = v.corRadialCenter  || 'rgba(255,0,0,0.08)';
-  var corRadialE     = v.corRadialEdge    || 'rgba(0,0,0,0.96)';
-  var corBorda       = v.corBorda         || '#ff1a1a';
-  var corGlow1       = v.corGlow1         || 'rgba(255,0,0,0.65)';
-  var corGlow2       = v.corGlow2         || 'rgba(255,0,0,0.25)';
-  var corGlowI       = v.corGlowInset     || 'rgba(255,0,0,0.08)';
-  var blur           = v.blur             || '4px';
-  var radius         = v.borderRadius     || '28px';
-  var largura        = v.larguraMaxima    || '370px';
-  var padding        = v.padding          || '34px 28px 36px';
-  var logoUrl        = v.logoUrl          || '';
-  var tamLogo        = v.tamanhoLogo      || '92px';
-  var radLogo        = v.radiusLogo       || '22px';
-  var titulo         = v.titulo           || 'BEM-VINDO';
-  var texto          = v.texto            || 'Seja bem-vindo!';
-  var labelCupom     = v.labelCupom       || 'CUPOM DE DESCONTO';
-  var cupom          = v.codigoCupom      || 'DESCONTO10';
-  var msgCop         = v.msgCopiado       || 'Cupom copiado!';
-  var corBtnClose    = v.corBotaoFechar   || '#ff2b2b';
-  var corTit         = v.corTitulo        || '#ffffff';
-  var corTxt         = v.corTexto         || 'rgba(255,255,255,0.82)';
-  var corSub         = v.corSubtitulo     || '#ff2020';
-  var tamTit         = v.tamanhoTitulo    || '27px';
-  var tamTxt         = v.tamanhoTexto     || '15px';
-  var corBtn1        = v.corBotao1        || '#ff2a2a';
-  var corBtn2        = v.corBotao2        || '#ff0000';
-  var corTxtBtn      = v.corTextoBotao    || '#ffffff';
-  var corMsg         = v.corMsgCopiado    || '#27ff7a';
-
   var doc =
     '<!DOCTYPE html><html><head><meta charset="UTF-8">'
     + '<style>'
     + '*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;}'
-    + 'body{background:radial-gradient(circle at center,' + corRadialC + ',' + corRadialE + ' 70%);'
-      + 'backdrop-filter:blur(' + blur + ');min-height:480px;display:flex;align-items:center;justify-content:center;padding:20px;}'
-    + '.box{position:relative;width:100%;max-width:' + largura + ';background:' + corFundo + ';'
-      + 'border:2px solid ' + corBorda + ';border-radius:' + radius + ';padding:' + padding + ';text-align:center;'
-      + 'box-shadow:0 0 12px ' + corGlow1 + ',0 0 30px ' + corGlow2 + ',inset 0 0 18px ' + corGlowI + ';color:#fff;}'
-    + '.x{position:absolute;top:16px;right:18px;background:transparent;border:none;color:' + corBtnClose + ';font-size:32px;line-height:28px;cursor:pointer;}'
-    + '.logo{width:' + tamLogo + ';height:' + tamLogo + ';margin:0 auto 20px;border-radius:' + radLogo + ';object-fit:cover;display:block;box-shadow:0 0 14px ' + corGlow1 + ';}'
-    + 'h2{margin:0 0 14px;font-size:' + tamTit + ';font-weight:900;letter-spacing:1px;color:' + corTit + ';text-transform:uppercase;text-shadow:0 0 8px ' + corGlow2 + ';}'
-    + 'p{margin:0 auto 18px;max-width:290px;font-size:' + tamTxt + ';line-height:1.5;color:' + corTxt + ';}'
-    + '.sub{margin:0 0 18px;font-size:16px;font-weight:800;color:' + corSub + ';text-transform:uppercase;}'
-    + '.btn{display:inline-flex;align-items:center;justify-content:center;min-width:170px;min-height:54px;padding:12px 28px;'
-      + 'border-radius:16px;border:none;background:linear-gradient(180deg,' + corBtn1 + ',' + corBtn2 + ');'
-      + 'color:' + corTxtBtn + ';font-size:19px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;'
-      + 'box-shadow:0 0 14px ' + corGlow1 + ';cursor:pointer;}'
-    + '.msg{margin-top:14px;font-size:14px;font-weight:700;color:' + corMsg + ';opacity:0;}'
+    + 'body{background:#000;min-height:480px;display:flex;align-items:center;justify-content:center;padding:20px;color:#fff;}'
+    + 'h1{text-align:center;}'
     + '</style></head><body>'
-    + '<div class="box">'
-      + '<button class="x">&times;</button>'
-      + (logoUrl ? '<img class="logo" src="' + logoUrl + '" alt="Logo">' : '')
-      + '<h2>' + titulo + '</h2>'
-      + '<p>' + texto + '</p>'
-      + '<div class="sub">' + labelCupom + '</div>'
-      + '<button class="btn">' + cupom + '</button>'
-      + '<div class="msg">' + msgCop + '</div>'
-    + '</div>'
+    + '<h1>Constelação Interativa</h1>'
+    + '<script>' + BASE_JS + '</script>'
     + '</body></html>';
 
   var old = box.querySelector('iframe');
