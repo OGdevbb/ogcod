@@ -7,6 +7,10 @@ const COMPONENT = {
   description: 'Fundo animado com partículas conectadas que formam constelações, com interação ao mouse. Cores neon personalizáveis.',
 
   fields: [
+    { id: 'numParticles',  label: 'Número de Partículas',        type: 'text',  placeholder: 'Ex: 150', default: '150', required: true },
+    { id: 'particleColor', label: 'Cor das Partículas',          type: 'color', default: '#a020f0' },
+    { id: 'linkDistance',  label: 'Distância de Conexão (px)',   type: 'text',  placeholder: 'Ex: 120', default: '120', required: true },
+    { id: 'mouseRadius',   label: 'Raio de Interação do Mouse',  type: 'text',  placeholder: 'Ex: 150', default: '150', required: true },
   ],
 };
 
