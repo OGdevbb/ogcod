@@ -294,6 +294,17 @@ const CARDS = [
     image: 'https://imgur.com/hzvh8FN.png'
   },
 
+                      {
+    id: 'constelacao',
+    name: 'Constelação',
+    tags: ['constelacao', 'estilo'],
+    badge: 'free',
+    category: 'layout',
+    link: 'codigos/constelacao/index.html',
+    image: 'https://imgur.com/yiwuHiL.png'
+  },
+
+
   // ─────────────────────────────────────────────────────────────
   //  ➕ ADICIONE NOVOS CARDS AQUI:
   // {
